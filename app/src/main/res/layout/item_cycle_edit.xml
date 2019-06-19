@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:padding="@dimen/paddingMyTestList">
+
+   <FrameLayout
+         android:layout_width="wrap_content"
+         android:layout_height="match_parent"
+         android:layout_weight="0"
+         android:paddingTop="4dp"
+         android:paddingBottom="4dp"
+         android:paddingLeft="10dp"
+         android:paddingRight="10dp">
+
+      <ImageView
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/add_button_bg"
+            android:src="@drawable/ico_plus"/>
+
+   </FrameLayout>
+
+   <TextView
+         android:id="@+id/cycle_date"
+         android:layout_width="0dp"
+         android:layout_height="match_parent"
+         android:layout_gravity="center"
+         android:layout_weight="2"
+         android:gravity="center"
+         android:text="09/08/2016"
+         android:textSize="@dimen/textMyTestList" />
+
+   <TextView
+         android:id="@+id/cycle_duration"
+         android:layout_width="0dp"
+         android:layout_height="match_parent"
+         android:layout_gravity="center"
+         android:layout_weight="1"
+         android:gravity="center"
+         android:text="30 days"
+         android:textSize="@dimen/textMyTestList" />
+
+</LinearLayout>

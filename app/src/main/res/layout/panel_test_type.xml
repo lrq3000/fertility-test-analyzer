@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="4dp"
+    android:paddingTop="4dp"
+    tools:showIn="@layout/activity_test_edition">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.5" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="2dp">
+
+        <RadioButton
+            android:id="@+id/btn_type_ovulation"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="24dp"
+            android:padding="6dp"
+            android:layout_gravity="center"
+            android:background="@drawable/selector_type_button"
+            android:button="@null"
+            android:checked="false"
+            android:drawableLeft="@drawable/ico_ovulation"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ico_ovulation"
+            android:elevation="2dp"
+            android:paddingEnd="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingStart="16dp"
+            android:text="@string/ovulation"
+            android:textAllCaps="true"
+            android:textColor="@color/colorWhiteText"
+            android:textSize="@dimen/sizeTextPanelTestType" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="2dp">
+
+        <RadioButton
+            android:id="@+id/btn_type_pregnancy"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="24dp"
+            android:padding="6dp"
+            android:layout_gravity="center"
+            android:background="@drawable/selector_type_button"
+            android:button="@null"
+            android:checked="false"
+            android:drawableLeft="@drawable/ico_pregnant"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ico_pregnant"
+            android:elevation="2dp"
+            android:paddingEnd="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingStart="16dp"
+            android:text="@string/pregnancy"
+            android:textAllCaps="true"
+            android:textColor="@color/colorWhiteText"
+            android:textSize="@dimen/sizeTextPanelTestType" />
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.5" />
+
+</LinearLayout>

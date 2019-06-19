@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/paddingMyTestList">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/test_pigment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_weight="0.7"
+            android:gravity="start"
+            android:text="70%"
+            android:textSize="@dimen/textMyTestList" />
+
+        <TextView
+            android:id="@+id/test_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="09/08/2016"
+            android:textSize="@dimen/textMyTestList" />
+
+        <TextView
+            android:id="@+id/test_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="08:16"
+            android:textSize="@dimen/textMyTestList" />
+
+        <ImageButton
+            android:id="@+id/btn_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0"
+            android:background="#00ffffff"
+            android:padding="4dp"
+            android:src="@drawable/ico_note" />
+
+        <ImageButton
+            android:id="@+id/btn_remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="0"
+            android:background="#00ffffff"
+            android:padding="4dp"
+            android:src="@drawable/ico_delete" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/test_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/paddingMyTestList"
+        android:text="Notes..."
+        android:textSize="@dimen/textMyTestList"
+        android:visibility="gone" />
+
+</LinearLayout>

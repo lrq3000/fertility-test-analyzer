@@ -1,0 +1,8 @@
+
+Fertility Test Analyzer
+Copyright 2019 Colnix Technology
+
+This app has been developed by Pablo Arquer and María Rodríguez.
+
+https://www.colnix.com
+

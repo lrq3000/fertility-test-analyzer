@@ -1,0 +1,373 @@
+<resources>
+    <string name="app_name">Fertility Test Analyzer</string>
+
+    <string name="navigation_open">Open navigation drawer</string>
+    <string name="navigation_close">Close navigation drawer</string>
+
+    <!-- Camera View -->
+    <string name="camera_not_found">Camera not found.</string>
+    <string name="camera_access_error">Camera access error.</string>
+
+    <!-- Notifications -->
+    <string name="notify_title">Fertility Test Analyzer</string>
+    <string name="notify_ok">OK</string>
+
+    <!-- Home Activity -->
+    <string name="new_test">New Test</string>
+    <string name="my_tests">My Cycles</string>
+    <string name="my_cycles">Charts</string>
+    <string name="information">Information</string>
+    <string name="settings">Settings</string>
+    <string name="help">Help</string>
+    <string name="desc_new_test">Create a new test</string>
+    <string name="desc_my_tests">List of my cycles, my tests and their characteristics</string>
+    <string name="desc_my_cycles">Pigmentation chart of my cycles</string>
+    <string name="desc_information">Information about fertility and conception</string>
+    <string name="desc_settings">App settings</string>
+    <string name="desc_help">App help</string>
+    <string name="home_msg_title">¡Thank you for downloading Fertility Test Analyzer!</string>
+    <string name="home_msg_content">This app helps you interpret ovulation and pregnancy test strips
+        of any trademark. If you don\'t have them yet, you can easily buy them in on-line stores.</string>
+
+    <!-- New Test Activity error messages -->
+    <string name="title_new_test">New Test</string>
+    <string name="err_dark">The image is too dark</string>
+    <string name="title_test_verification">Test Verification</string>
+
+    <!-- Test Edition Activity -->
+    <string name="title_test_edition">New Test</string>
+    <string name="pigmentation">Pigmentation</string>
+    <string name="test_type">Test Type</string>
+    <string name="test_interpretation">Test Interpretation</string>
+    <string name="select_test">Please select one test.</string>
+    <string name="test_date">Test Date</string>
+    <string name="text_cycle">Cycle</string>
+    <string name="text_new_cycle">New Cycle</string>
+    <string name="cycle_help">The cycle date corresponds to the <b>first day of your period</b>.
+      It can be changed later.</string>
+    <string name="brand">Brand</string>
+    <string name="brand_hint">Write the test brand here</string>
+    <string name="note">Note</string>
+    <string name="note_hint">Add your notes here</string>
+    <string name="open_img">Open test picture</string>
+
+    <!-- Test Interpretation -->
+    <string name="not_pregnant"><b>Not pregnant</b>\nThe pigmentation of the test line is lower than the
+      threshold value for pregnancy (5%).</string>
+    <string name="pregnant"><b>Pregnant!</b>\nCongratulations, the pigmentation of the test line is equal or higher than
+      the threshold value for pregnancy (5%).</string>
+    <string name="ovulating"><b>On your fertile window</b>\nThe pigmentation of the test line is equal
+      or higher than the pigmentation of the control line. Ovulation is likely to happen in the next
+      three days.</string>
+    <string name="not_ovulating"><b>Not entering your fertile window</b>\nThe pigmentation of the test
+      line is lower than the pigmentation of the control line. Ovulation is not likely to happen in the
+      next days.\n
+      However, you could be on your fertile window if you have obtained a positive ovulation test three
+      or less days ago.</string>
+
+    <!-- Panel Test Type -->
+    <string name="ovulation">Ovulation</string>
+    <string name="pregnancy">Pregnancy</string>
+
+    <!-- My Cycles Activity -->
+    <string name="title_my_tests">My Cycles</string>
+    <string name="cycle_days">%1$d days</string>
+    <string name="cycle_header">Cycle %1$s</string>
+    <string name="pigment_percent">%1$d%%</string>
+
+    <!-- Charts Activity -->
+    <string name="title_my_cycles">Charts</string>
+    <string name="chart_pigmentation">% pigmentation</string>
+    <string name="chart_days">Day of cycle</string>
+    <string name="chart_cycle">Cycle: %1$s</string>
+    <string name="chart_cycles">Comparison of %1$d cycles</string>
+    <string name="chart_title">CYCLES COMPARISON CHART</string>
+    <string name="chart_list_title">List of my cycles</string>
+    <string name="chart_list_expl">Tap the cycle to add it to or remove it from the chart.</string>
+    <string name="chart_long_cycles">Cycles too long slow down the chart considerably.</string>
+
+    <!-- Cycle Edition and Date Selection Activities -->
+    <string name="title_cycle_edition">Cycle Beginning Date</string>
+    <string name="title_date_selection">Date Selection</string>
+
+    <!-- Dialogs -->
+    <string name="delete_cycle_title">Delete a Cycle</string>
+    <string name="delete_empty_cycle_message">Are you sure that you want to delete this cycle?</string>
+    <string name="delete_first_cycle_message">You are about to delete the first recorded cycle. If you
+      continue, the tests of this cycle will be deleted as well.\n
+      Do you really want to continue?</string>
+    <string name="delete_cycle_message">You are about to delete a cycle. What do want to do with its tests?\n
+      Merge all the tests of this cycle with the previous one.\n
+      Delete the cycle and its tests.</string>
+    <string name="delete_test_title">Delete this test</string>
+    <string name="delete_test_message">You\'ll lose all the test\'s information!</string>
+    <string name="delete_yes">Delete</string>
+    <string name="delete_merge">Merge Tests</string>
+    <string name="delete_all">Delete All</string>
+    <string name="delete_no">Cancel</string>
+
+    <!-- Navigation Bar -->
+    <string name="navbar_home">Home</string>
+    <string name="navbar_new_test">New Test</string>
+    <string name="navbar_my_tests">My Cycles</string>
+    <string name="navbar_my_cycles">Charts</string>
+    <string name="navbar_information">Information</string>
+    <string name="navbar_app">Application</string>
+    <string name="navbar_settings">Settings</string>
+    <string name="navbar_help">Help</string>
+    <string name="navbar_about">About</string>
+
+    <!-- Sharing the app -->
+    <string name="share_text">Check out this fertility app!! %1$s</string>
+    <string name="share_title">Share app with...</string>
+    <string name="share_error">Error found opening the URI.</string>
+
+    <!-- Action Bar -->
+    <string name="subtitle_actionbar">HELPING WOMEN THROUGHOUT THE WORLD</string>
+
+    <!-- Settings Activity -->
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="pref_storage">Storage</string>
+    <string name="pref_saving_pict">Enable saving test pictures</string>
+    <string name="pref_saving_expl">Associated test data is saved anyway</string>
+
+    <string name="pref_information">Information</string>
+    <string name="pref_ovulation_brand">Default ovulation test brand</string>
+    <string name="pref_brand_hint">Write the brand here</string>
+    <string name="pref_pregnancy_brand">Default pregnancy test brand</string>
+    <string name="pref_display_preg_brand">Write the brand here</string>
+
+    <string name="pref_version">Version</string>
+    <string name="pref_clear_title">Reset settings</string>
+    <string name="pref_clear">Click here to clear all the preferences.</string>
+    <string name="pref_reset">All preferences reset.</string>
+
+    <string name="pref_usability">Usability</string>
+
+    <string name="pref_torch">Enable using flash during autofocus when it is dark </string>
+    <string name="pref_torch_expl">Flash helps the camera with focus, but it will not be forced to be on
+      during image acquisition</string>
+    <string name="pref_notes">Enable visibility of test notes</string>
+    <string name="pref_notes_expl">If you want test notes to be always visible in My Cycles tests list</string>
+    <string name="pref_camera">Show again the camera tips</string>
+    <string name="pref_camera_expl">If you want the information to be visible the next time you take a picture</string>
+
+    <!-- Information Activity -->
+    <string name="info_title_teststrips">Test Strips</string>
+    <string name="info_teststrips">A test strip is a basic and inexpensive diagnostic tool which is used to determine hormonal changes in a person\'s
+        urine. It has a chemical pad that reacts with the urine, changing color, when is immersed in during a certain period of time (usually
+        a few seconds).\n\nSome test strips are used to predict when a woman is going to ovulate –Ovulation Tests– and others are used to
+        determine if she is pregnant –Pregnancy Tests–.</string>
+    <string name="info_title_ovulation">Ovulation Test Strips</string>
+    <string name="info_ovulation1">Either if you are trying to get pregnant or are trying to prevent pregnancy, Ovulation Tests are very useful
+        to find your fertile days. Unlike temperature charting, which tells when you have ovulated, these tests help you predict in advance the time of
+        ovulation and peak fertility.\n\n
+        Each month your body increases the production of Luteinizing Hormone (LH) halfway through the cycle
+        which causes the releasing of an egg (ovulation). When the test shows a positive result, it means that ovulation will happen in
+        the next three days. Pregnancy is technically only possible from five days before ovulation to the day of ovulation.</string>
+    <string name="info_ovulation2">1. How do they work?\n\n
+        The tests have two chemical pads: a test line to show qualitatively the LH present in your urine and a control line to show if
+        the test has worked properly. This control line also gives the baseline color to interpret the test results. If the test line is the same
+        intensity or darker than the test control band, it means that you will ovulate within the next days. When the test line color is lighter
+        than the other line, it means that your body has not released its surge of LH.\n\n
+        2. When is the best time of day to take the ovulation test?\n\n
+        From 10am to early evening. This is because the LH is synthesized by your body in the early morning and will not appear in your urine until
+        later in the day.\n\n
+        3. Should I take the test at the same time every day?\n\n
+        Yes, if you want to optimize results accuracy take the tests at the same time each day. It is also recommended to reduce your liquid intake
+        around 2 hours before testing as a diluted urine sample can hinder detection of the LH surge.\n\n
+        4. When is best to have sex in order to increase the chance of conceiving?\n\n
+        It is recommended to time intercourse after a positive result, the day of the LH surge as well as the following three days after, 
+        as this is the window of maximum fertility. However many doctors recommend to have sex once every two days during your cycle if you are
+        trying for a baby, especially if you have irregular periods.\n\n
+        5. Are there any other common signs or symptoms of ovulation?\n\n
+        Yes, a Basal Body Thermal (BBT) shift is a very clear sign you\'ve ovulated. If you BBT chart daily, you\'ll be able to tell when the egg
+        was released based on an increase in body temperature. However, it will become measurable the day after you ovulate. The ovulation
+        cramping or midcycle pains (mittelschmerz) that some women feel, signal the actual release of the egg. The abundance of fertile
+        quality cervical mucus is another symptom, and it occurs just prior to your fertile window. Once you ovulate, rising levels of
+        progesterone and decreasing estrogens will result in less cervical mucus, and the quality of mucus will deteriorate, becoming
+        less fertile (sticky, opaque, white/yellowish, hold its shape). Finally, the location of the cervix can tell you if ovulation is near.
+        As you approach ovulation, your cervix becomes soft, high, open and wet. After ovulation these signs reverse, and your cervix becomes
+        firm, low, closed and dry.</string>
+    <string name="info_title_pregnancy">Pregnancy Test Strips</string>
+    <string name="info_pregnancy1">Like ovulation tests, pregnancy tests also work detecting the presence of a certain hormone in your urine.
+        When a fertilized egg implants in your uterus lining, membranes surrounding the tiny embryo begin secreting Human Chorionic Gonadotrophin
+        (HCG) into your blood. This hormone can be detected in your urine about 7 to 14 days after fertilization. HCG level peaks at the second
+        month of pregnancy, then declines. Although low, this level remains steady until birth.</string>
+    <string name="info_pregnancy2">Some pregnancy tests are sensitive enough to pick up a trace of HCG before your period is due. You will see
+        that concentrations of HCG are reported in milli-International Units (mIU) per milliliter. A test with a sensitivity of 20 mIU/ml is more
+        sensitive than one with a sensitivity of 50 mIU/ml.\n\n
+        1. How do they work?\n\n
+        These pregnancy tests have two chemical pads, a test line to show qualitatively the HCG present in your urine and a control line to show
+        if the test worked properly. When the test line appears, even fade, it means that you are pregnant.\n\n
+        2. When is the best time of day to take the pregnancy test?\n\n
+        First morning urine is the best time to collect a sample for pregnancy tests.\n\n
+        3. When can I get my first positive pregnancy test?\n\n
+        20mIU/hCG tests offer increased sensitivity and a capacity to detect a positive result earlier. This means that you can begin testing
+        at approximately 7 to 10 days past ovulation. Nevertheless, a negative within this time frame does not necessarily indicate you are
+        not pregnant.</string>
+    <string name="info_title_fta">Fertility Test Analyzer</string>
+    <string name="info_fta1">Most of the time, it happens that test results are not clear and women find them difficult to read. It can be really
+        frustrating not to have a certain answer especially if you have been trying to conceive for a long time. That is the reason why Fertility
+        Test Analyzer app has been created.</string>
+    <string name="info_fta2">Fertility Test Analyzer is an application that helps women like you to properly interpret the results of both ovulation and
+        pregnancy tests. Using our own developed algorithm, the app recognizes the pigmentation trace present in the test pad and gives you your
+        long awaited answer. But this is not the only feature of the app! You can also store your ovulation and/or pregnancy test results and see
+        your body\'s evolution throughout a cycle or several cycles.\n\n
+        It is really easy to use, helpful and convenient!\n\n
+        Fertility Test Analyzer also helps you save money because now you can buy those cheap test strips and take tests everyday knowing that you will
+        have reliable results once and for all.</string>
+
+    <!-- Help Activity -->
+    <string name="help_title_activity">Help</string>
+    <string name="help_how_to">How to start?</string>
+    <string name="help_follow">Follow these simple steps to start using the app:</string>
+    <string name="help_step_one">STEP 1</string>
+    <string name="help_step_two">STEP 2</string>
+    <string name="help_step_three">STEP 3</string>
+    <string name="help_step_four">STEP 4</string>
+    <string name="help_step_five">STEP 5</string>
+
+    <string name="help_one_text">Take a picture of the test using the New Test camera.</string>
+    <string name="help_two_text">Introduce few data about the test.</string>
+    <string name="help_three_text">Find out the result and interpretation.</string>
+    <string name="help_four_text">Manage your test results using the My Cycles list.</string>
+    <string name="help_five_text">Analyze your data using our Charts tool.</string>
+
+    <string name="help_good_pic_title">Good picture, accurate results!</string>
+    <string name="help_good_pic1">Fertility Test Analyzer relies on the good quality of your photos to provide the best results. If the camera of
+    your device does not have a good resolution or contrast, it is going to be difficult to take the most of our app features. </string>
+    <string name="help_good_pic2">Take into account that both the resolution of your camera and a good lighting are critical to
+    produce optimal images. We highly recommend you to lean your elbows on a surface and use day light when taking the photographs.</string>
+
+    <string name="help_mask_title">How do I take a picture of a test strip?</string>
+    <string name="help_mask1">Fertility Test Analyzer provides you with three different mask sizes that you can choose to take
+    the photo. Select the one that suits you better and place the test strip inside the strip outline that appears in the screen. </string>
+    <string name="help_mask2">It is important to place the test so the handle is on the right, the control line is in the rectangle and
+         the test line is within the square brackets.</string>
+
+    <string name="help_percentage_title">What does the percentage given by the app mean?</string>
+    <string name="help_percentage_expl1">The app compares the pigmentation level of the test line versus the control line and gives
+    a percentage. Thus, the percentage is the relative value of the test line pigmentation with respect to the control line pigmentation.
+        For example:</string>
+    <string name="help_percentage_expl2">0% -  means that the app has not detected any pigmentation of the test line.</string>
+    <string name="help_percentage_expl3">40% - means that the pigmentation of the test line is 60% lighter than
+    the pigmentation of the control line.</string>
+    <string name="help_percentage_expl4">100% - means that the pigmentation of the test line is the same than the
+    pigmentation of the control line.</string>
+    <string name="help_percentage_expl5">120% - means that the pigmentation of the test line is 20% more intense
+    than the pigmentation of the control line.</string>
+
+    <string name="help_threshold_title">Why a threshold value for pregnancy tests?</string>
+    <string name="help_threshold1">Fertility Test Analyzer establishes a threshold value (5% of pigmentation) to start considering a pregnancy
+        test as positive.</string>
+    <string name="help_threshold2">This is important to prevent measurement errors (inherent to all measurement techniques) from being considered
+        as positive results. </string>
+
+    <string name="help_brand_title">Should I use the same brand to compare tests?</string>
+    <string name="help_brand">Yes, it is very important to use the same brand of ovulation or pregnancy tests to compare results in time.
+    Brands tend to differ in pigmentation levels and results could not show consistency.</string>
+
+    <string name="help_focus_title">How can I get my photos in-focus?</string>
+    <string name="help_focus1">We highly recommend you to lean your elbows on a surface to stay steady, place the test on a white
+         surface and use good lighting. The best light to use is the natural daylight (indirect sunlight is optimal) because it is diffuse and white, producing uniform illumination,
+         without reflections and does not affect the test color.</string>
+    <string name="help_focus2">Sometimes it is difficult to get photos in sharp focus. In these cases, you can touch the screen to ask the camera
+        to focus on that area. By default the application uses the torch as a focus aid when it is necessary (the image is dark). This
+        feature can be disabled in Settings. Once you focus manually, the camera keeps the best configuration it could find, and if then you move
+        the test, you must touch the screen again to adjust the focus again.</string>
+    <string name="help_focus3">If you still have problems framing the test strip in the mask so that it is in sharp focus, you have another tool:
+        the zoom. Not all cameras support zooming. If your device does, you will see a slider on the screen that allows you to increase the size of the
+        image. This increasing is usually done by software and, therefore, the captured image will have a little less quality, but it should not be
+        a problem.</string>
+    <string name="help_focus4">These tips rely on the light conditions, your test strips and your device, so you have to carry out several trials
+        until you find the configuration that fits your case the best. In case you keep having difficulties, we provide three mask
+        sizes selectable at the top of the camera screen. The smaller the width of the mask, the further you could focus and, therefore, the easier
+        it should be to take a sharp image. Note that the smaller the test looks in the screen, the lesser the accuracy that the algorithm will have.</string>
+
+    <string name="help_contrast_title">Why does it say low contrast in control line?</string>
+    <string name="help_contrast">This means that you need more light to take a good picture. Try to get close to a window or turn on the torch
+    using the torch icon at the top of the screen (only available if your device supports this feature).</string>
+
+    <string name="help_qualitative_title">Transforming qualitative data into quantitative data. How accurate can that be?</string>
+    <string name="help_qualitative">Test strips give results based on the pigmentation level of a small line, this is qualitative data by definition.
+        They do not offer a numeric value to evaluate results, which often leads to interpretation problems.\n\n
+        Fertility Test Analyzer offers a solution analyzing the pigmentation level, extracting the percentage value and giving its correct
+        interpretation. However, the accuracy of the numeric value offered by the app is affected by a number of factors, i.e. test quality, how
+        diluted the urine is, the quality of the camera used, your skills in taking a good picture (sharp and in-focus) and a correct lighting.
+        Hence, numeric results obtained cannot be taken as exact values, only a laboratory can give those. That said, we normally get an
+        accuracy better than 95% in our tests.\n\n
+        Use at your own risk. Do not use to avoid pregnancy or anything where more accuracy would be required. Please consult your healthcare
+        provider for any health concern.</string>
+
+    <!-- Camera Activity -->
+    <string name="cam_torch_on">On</string>
+    <string name="cam_torch_off">Off</string>
+    <string name="cam_zoom">Zoom</string>
+    <string name="cam_mask">Mask</string>
+    <string name="cam_alert_message">Place the test strip inside the mask on a white surface</string>
+    <string name="cam_alert_button">OK</string>
+    <string name="dont_show_again">Don\'t show again.</string>
+
+    <!-- Cycle Edition Activity -->
+    <string name="cedit_date">Select a date</string>
+    <string name="cedit_accept">Accept</string>
+    <string name="date_limited">Selected date restricted to valid limits.</string>
+
+    <!-- Test Verification Activity -->
+    <string name="cam_save_on">Save Picture</string>
+    <string name="cam_save_off">Not Save Picture</string>
+    <string name="cam_low_res_title">Low quality image</string>
+    <string name="cam_low_res">The detection of the line has failed.
+        \nYou can click the RECALCULATE button to process the image in Low
+         Precision Mode (less accurate than Normal Mode) or discard the image and try again.</string>
+    <string name="cam_low_res_note">Test captured in Low Precision Mode</string>
+
+    <!-- My Cycles Activity -->
+    <string name="mcycles_expl1">A new cycle must begin after the previous cycle plus one day.\n</string>
+    <string name="mcycles_expl2">A new cycle must begin before the first test so there is no dangling tests unassigned.</string>
+    <string name="mcycles_expl3">A new cycle must begin before the next cycle minus one day.</string>
+    <string name="mcycles_expl4">No Option Available</string>
+    <string name="mcycles_expl5">Sorry, there is no space to create a new cycle. This cycle is just at the end of one cycle
+        and at the beginning of another.</string>
+    <string name="mcycles_ok">Ok</string>
+    <string name="mcycles_deleted">Test deleted</string>
+
+    <!-- New Test Activity -->
+    <string name="ntest_camera_perm">Camera access required to capture new tests.</string>
+
+    <!-- Test Edition Activity -->
+    <string name="ted_expl1">Sorry, this date matches the date of another existing cycle.</string>
+    <string name="ted_expl2">You cannot create a cycle in a date that matches the date of another existing cycle.\n</string>
+    <string name="ted_expl3">The cycle must begin before or on the date of this test.</string>
+
+    <!-- Test Verification Activity -->
+    <string name="tverific_warn_control_contrast">Warning: Low contrast in control line. Improve positioning.</string>
+    <string name="tverific_warn_handle_contrast">Warning: Low contrast in handle. Check test positioning.</string>
+    <string name="tverific_permision_denied">Permission denied, the photo could not be saved.</string>
+    <string name="tverific_permision_needed">Permission Needed</string>
+    <string name="tverific_permision_expl">This app can save the photos of your tests in your phone, but you have to grant write access to
+      your SD card.</string>
+    <string name="tverific_photo_saved">Photo saved in your gallery.</string>
+    <string name="tverific_pigment">Pigmentation:</string>
+    <string name="tverific_error_control_not_found">Control line not found</string>
+    <string name="tverific_error_control_contrast">Not enough contrast in control line</string>
+    <string name="tverific_error_position_light">Check test positioning and lighting</string>
+    <string name="tverific_error_line_not_found">Line not found</string>
+    <string name="tverific_fatal">It has been impossible to detect the line</string>
+
+    <!-- Light Tip Activity -->
+    <string name="tip_problems">Are you having problems taking a picture?</string>
+    <string name="tip_still_problems">Also&#8230;</string>
+    <string name="tip_window">Try improving lighting by placing the test by a window.\n\nNatural light helps to get better focus.</string>
+    <string name="tip_zoom">Try to focus on the test slightly far away and, afterwards, use the zoom tool at the
+        top of the screen to place the test inside the mask.</string>
+    <string name="tip_mask">Try another mask for your pictures.\n\nThere are 3 options available at the top of the screen.
+        The lower the number, the easier to get in focus.</string>
+
+    <!-- Copyright notice -->
+    <string name="copyright">Copyright 2019 Colnix Technology
+    \n\nThis app has been developed by Pablo Arquer and María Rodríguez.
+    \n\nhttps://www.colnix.com</string>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Screen smallest dimension bigger than 560dp (3.5 inches) -->
+    <dimen name="paddingHomeButton">28sp</dimen>
+    <dimen name="sizeTextUnderButton">24sp</dimen>
+    <dimen name="paddingCamButton">24dp</dimen>
+    <dimen name="sizeTextTextInterpretation">18sp</dimen>
+    <dimen name="paddingMyTestList">10dp</dimen>
+    <dimen name="paddingMyTestHeader">10dp</dimen>
+    <dimen name="textMyTestList">18sp</dimen>
+    <dimen name="paddingHeaderMyTestList">12dp</dimen>
+    <dimen name="sizeTextActionBarTitle">38sp</dimen>
+    <dimen name="sizeTextActionBarSubtitle">24sp</dimen>
+    <dimen name="sizeTextNavigationTitle">24sp</dimen>
+    <dimen name="sizeTextNavigationSubtitle">14sp</dimen>
+    <dimen name="sizeTextToolBarTitle">24sp</dimen>
+    <dimen name="paddingHelpImg">10sp</dimen>
+    <dimen name="sizeTextTitle">20sp</dimen>
+    <dimen name="sizeTextParagraph">18sp</dimen>
+    <dimen name="sizeTextPanelTestType">16sp</dimen>
+    <dimen name="paddingTestButton">16dp</dimen>
+    <dimen name="sizeHelpTitle">24sp</dimen>
+    <dimen name="helpPaddingTop">30dp</dimen>
+    <dimen name="buttonMargin">20dp</dimen>
+    <dimen name="textMargin">30dp</dimen>
+    <dimen name="textDate">230dp</dimen>
+</resources>

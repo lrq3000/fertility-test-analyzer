@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default dimensions: medium screen -->
+    <dimen name="marginTextUnderButton">12sp</dimen>
+    <dimen name="paddingHomeBottom">16sp</dimen>
+    <dimen name="paddingCamButton">16dp</dimen>
+    <dimen name="paddingHomeButton">16sp</dimen>
+    <dimen name="sizeTextUnderButton">16sp</dimen>
+    <dimen name="sizeTextPanelTestType">12sp</dimen>
+    <dimen name="sizeTextTitle">15sp</dimen>
+    <dimen name="sizeTextParagraph">14sp</dimen>
+    <dimen name="sizeHelpTitle">18sp</dimen>
+    <dimen name="paddingHelpButton">4sp</dimen>
+    <dimen name="paddingMyTestList">4dp</dimen>
+    <dimen name="paddingMyTestHeader">4dp</dimen>
+    <dimen name="textMyTestList">14sp</dimen>
+    <dimen name="paddingHeaderMyTestList">8dp</dimen>
+    <dimen name="sizeTextNavigationTitle">20sp</dimen>
+    <dimen name="sizeTextNavigationSubtitle">11sp</dimen>
+    <dimen name="sizeTextActionBarTitle">25sp</dimen>
+    <dimen name="sizeTextActionBarSubtitle">13sp</dimen>
+    <dimen name="sizeTextToolBarTitle">20sp</dimen>
+    <dimen name="paddingHelpImg">8sp</dimen>
+    <dimen name="paddingTestButton">0dp</dimen>
+    <dimen name="helpPaddingTop">16dp</dimen>
+    <dimen name="buttonMargin">10dp</dimen>
+    <dimen name="textMargin">10dp</dimen>
+    <dimen name="textPigmentPercent">60sp</dimen>
+    <dimen name="textPigment">24sp</dimen>
+</resources>

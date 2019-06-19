@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="40"
+   viewBox="0 0 40 40"
+   width="40"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="ico_phone.svg"
+   inkscape:version="0.92.1 r15371"
+   style="fill:#000000">
+  <metadata
+     id="metadata12">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1041"
+     id="namedview8"
+     showgrid="false"
+     inkscape:zoom="9.8333333"
+     inkscape:cx="16.830508"
+     inkscape:cy="13.728813"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6" />
+  <g
+     style="display:inline;fill:#ffffff;fill-opacity:1;stroke-width:0.77301997"
+     transform="matrix(0.6009557,0,0,0.6009557,-186.3006,-129.51256)"
+     id="g4140-3-0">
+    <path
+       inkscape:connector-curvature="0"
+       d="m 355.08692,216.34301 h -23.59878 c -4.89675,0 -8.84954,3.9528 -8.84954,8.84954 v 47.19755 c 0,4.89675 3.95279,8.84954 8.84954,8.84954 h 23.59878 c 4.89674,0 8.84954,-3.95279 8.84954,-8.84954 v -47.19755 c 0,-4.89674 -3.9528,-8.84954 -8.84954,-8.84954 z m -5.8997,58.99693 h -11.79939 v -2.94984 h 11.79939 z m 9.587,-8.84953 h -30.97339 v -41.29786 h 30.97339 z"
+       id="path4142-1-9"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.77301997" />
+    <g
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.77301997"
+       id="g4144-2-4"
+       transform="translate(0.21533328)">
+      <rect
+         y="227.93466"
+         x="340.88135"
+         height="8.8942404"
+         width="4.4143519"
+         id="rect4146-3-8"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.77301997" />
+      <rect
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.77301997"
+         id="rect4148-3-8"
+         width="4.4143519"
+         height="5.3826447"
+         x="340.84869"
+         y="238.05138" />
+      <rect
+         y="244.65651"
+         x="340.88135"
+         height="19.596247"
+         width="4.4143519"
+         id="rect4150-4-2"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.77301997" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:fitsSystemWindows="true"
+    android:padding="0dp"
+    tools:context="com.colnix.fta.NewTestActivity">
+
+    <com.colnix.fta.CameraView
+        android:id="@+id/camera"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.colnix.fta.StripPlaceholderView
+        android:id="@+id/placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.colnix.fta.ManualFocusView
+        android:id="@+id/focus_area"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/message_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:layout_margin="16dp"
+        android:background="@drawable/box_bg"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ico_warning_white" />
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/box_bg"
+            android:text="@string/err_dark"
+            android:textColor="@color/colorWhiteText"
+            android:textSize="@dimen/sizeTextParagraph" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btn_capture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|right"
+        android:layout_margin="@dimen/paddingHomeBottom"
+        android:background="@drawable/circular_button_bg"
+        android:padding="@dimen/paddingCamButton"
+        android:src="@drawable/ico_cam_white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:background="@color/colorDialogBg"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:paddingEnd="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingStart="15dp">
+
+            <Button
+                android:id="@+id/btn_load"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:text="Load"
+                android:visibility="gone" />
+
+            <CheckBox
+                android:id="@+id/check_torch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="0dp"
+                android:button="@drawable/torch_button"
+                android:text="@string/cam_torch_off"
+                android:textColor="@color/colorWhiteText" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <RadioGroup
+                android:id="@+id/mask_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/mask_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:button="@drawable/mask1_button"
+                    android:paddingEnd="8dp"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="8dp"
+                    android:paddingStart="4dp" />
+
+                <RadioButton
+                    android:id="@+id/mask_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:button="@drawable/mask2_button"
+                    android:paddingEnd="8dp"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="8dp"
+                    android:paddingStart="4dp" />
+
+                <RadioButton
+                    android:id="@+id/mask_large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:button="@drawable/mask3_button"
+                    android:paddingEnd="8dp"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="8dp"
+                    android:paddingStart="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/cam_mask"
+                    android:textColor="@color/colorWhiteText" />
+            </RadioGroup>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/zoom_out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ico_zoomout" />
+
+            <SeekBar
+                android:id="@+id/zoom_bar"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:max="10"
+                android:progress="0" />
+
+            <ImageView
+                android:id="@+id/zoom_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:src="@drawable/ico_zoomin" />
+
+            <TextView
+                android:id="@+id/zoom_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/cam_zoom"
+                android:textColor="@color/colorWhiteText" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/window_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorGreyTransp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:padding="@dimen/buttonMargin"
+                android:text="@string/tip_problems"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorWhiteText"
+                android:textSize="@dimen/sizeHelpTitle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/buttonMargin"
+                    android:src="@drawable/window" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="30dp"
+                    android:paddingStart="30dp"
+                    android:paddingRight="30dp"
+                    android:paddingEnd="30dp"
+                    android:text="@string/tip_window"
+                    android:textColor="@color/colorWhiteText"
+                    android:textSize="@dimen/sizeHelpTitle"
+                    android:layout_gravity="center" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/window_tip_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="@dimen/buttonMargin"
+                android:backgroundTint="@color/colorPrimaryLight"
+                android:padding="10dp"
+                android:text="@string/cam_alert_button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/zoom_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorGreyTransp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/buttonMargin"
+                android:text="@string/tip_still_problems"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorWhiteText"
+                android:textSize="@dimen/sizeHelpTitle" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="30dp"
+                android:paddingStart="30dp"
+                android:paddingRight="30dp"
+                android:paddingEnd="30dp"
+                android:text="@string/tip_zoom"
+                android:textColor="@color/colorWhiteText"
+                android:textSize="@dimen/sizeHelpTitle" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/zoom" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/zoom_tip_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="@dimen/buttonMargin"
+                android:backgroundTint="@color/colorPrimaryLight"
+                android:padding="10dp"
+                android:text="@string/cam_alert_button" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mask_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorGreyTransp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/buttonMargin"
+                android:text="@string/tip_still_problems"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorWhiteText"
+                android:textSize="@dimen/sizeHelpTitle" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="30dp"
+                android:paddingStart="30dp"
+                android:paddingRight="30dp"
+                android:paddingEnd="30dp"
+                android:text="@string/tip_mask"
+                android:textColor="@color/colorWhiteText"
+                android:textSize="@dimen/sizeHelpTitle" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:src="@drawable/mask" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/mask_tip_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="@dimen/buttonMargin"
+                android:backgroundTint="@color/colorPrimaryLight"
+                android:padding="10dp"
+                android:text="@string/cam_alert_button" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

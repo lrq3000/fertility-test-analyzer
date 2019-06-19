@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorAccentLight"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/paddingMyTestList"
+    android:paddingBottom="@dimen/paddingMyTestList"
+    android:paddingLeft="@dimen/paddingMyTestHeader"
+    android:paddingStart="@dimen/paddingMyTestHeader"
+    android:paddingRight="@dimen/paddingMyTestHeader"
+    android:paddingEnd="@dimen/paddingMyTestHeader">
+
+    <TextView
+        android:id="@+id/cycle_date"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.2"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:text="Cycle 09/08/2016"
+        android:textSize="@dimen/textMyTestList" />
+
+    <TextView
+        android:id="@+id/cycle_duration"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="30 days"
+        android:textSize="@dimen/textMyTestList" />
+
+    <ImageButton
+        android:id="@+id/btn_cycle_see"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:background="#00ffffff"
+        android:padding="4dp"
+        android:src="@drawable/ico_cycles" />
+
+    <ImageButton
+        android:id="@+id/btn_cycle_remove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_weight="0"
+        android:background="#00ffffff"
+        android:padding="4dp"
+        android:src="@drawable/ico_delete" />
+
+</LinearLayout>

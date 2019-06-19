@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <!-- Screen height bigger than 480dp (3 inches) -->
+   <dimen name="marginTextUnderButton">16sp</dimen>
+   <dimen name="paddingHomeBottom">32sp</dimen>
+   <dimen name="sizeTextTextInterpretation">14sp</dimen>
+   <dimen name="buttonMargin">20dp</dimen>
+   <dimen name="textMargin">30dp</dimen>
+</resources>

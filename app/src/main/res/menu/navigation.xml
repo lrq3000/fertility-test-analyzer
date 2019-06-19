@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ico_home"
+        android:title="@string/navbar_home" />
+    <item
+        android:id="@+id/nav_new_test"
+        android:icon="@drawable/ico_newtest_grey"
+        android:title="@string/navbar_new_test" />
+    <item
+        android:id="@+id/nav_my_tests"
+        android:icon="@drawable/ico_mytests_grey"
+        android:title="@string/navbar_my_tests"
+        app:actionLayout="@layout/text_tests_count" />
+    <item
+        android:id="@+id/nav_my_cycles"
+        android:icon="@drawable/ico_mycycles_grey"
+        android:title="@string/navbar_my_cycles"
+        app:actionLayout="@layout/text_cycles_count" />
+    <item
+        android:id="@+id/nav_information"
+        android:icon="@drawable/ico_info_grey"
+        android:title="@string/navbar_information" />
+
+    <item android:title="@string/navbar_app">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ico_settings_grey"
+                android:title="@string/navbar_settings" />
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@drawable/ico_help_grey"
+                android:title="@string/navbar_help" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ico_about_grey"
+                android:title="@string/navbar_about" />
+        </menu>
+    </item>
+
+</menu>

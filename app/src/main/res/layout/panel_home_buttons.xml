@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/activity_home">
+
+    <!-- First row of buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:elevation="0dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/home_btn_newTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/circular_button_bg"
+                android:contentDescription="@string/desc_new_test"
+                android:elevation="2dp"
+                android:src="@drawable/ico_newtest" />
+
+            <TextView
+                android:id="@+id/home_tx_newTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/home_btn_newTest"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/marginTextUnderButton"
+                android:text="@string/new_test"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="@dimen/sizeTextUnderButton" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/home_btn_myTests"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/circular_button_bg"
+                android:contentDescription="@string/desc_my_tests"
+                android:elevation="2dp"
+                android:src="@drawable/ico_mytests" />
+
+            <TextView
+                android:id="@+id/home_tx_myTests"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/home_btn_myTests"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/marginTextUnderButton"
+                android:text="@string/my_tests"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="@dimen/sizeTextUnderButton" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/home_btn_myCycles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/circular_button_bg"
+                android:contentDescription="@string/desc_my_cycles"
+                android:elevation="2dp"
+                android:src="@drawable/ico_mycycles" />
+
+            <TextView
+                android:id="@+id/home_tx_myCycles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/home_btn_myCycles"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/marginTextUnderButton"
+                android:text="@string/my_cycles"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="@dimen/sizeTextUnderButton" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!-- Second row of buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:elevation="0dp" >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/home_btn_information"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/circular_button_bg"
+                android:contentDescription="@string/desc_information"
+                android:elevation="2dp"
+                android:src="@drawable/ico_info" />
+
+            <TextView
+                android:id="@+id/home_tx_information"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/home_btn_information"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/marginTextUnderButton"
+                android:text="@string/information"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="@dimen/sizeTextUnderButton" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/home_btn_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/circular_button_bg"
+                android:contentDescription="@string/desc_settings"
+                android:elevation="2dp"
+                android:src="@drawable/ico_settings" />
+
+            <TextView
+                android:id="@+id/home_tx_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/home_btn_settings"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/marginTextUnderButton"
+                android:text="@string/settings"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="@dimen/sizeTextUnderButton" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/home_btn_help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/circular_button_bg"
+                android:contentDescription="@string/desc_help"
+                android:elevation="2dp"
+                android:src="@drawable/ico_help" />
+
+            <TextView
+                android:id="@+id/home_tx_help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/home_btn_help"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/marginTextUnderButton"
+                android:text="@string/help"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="@dimen/sizeTextUnderButton" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</merge>

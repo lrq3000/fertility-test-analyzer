@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.colnix.fta">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <application
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/FtaTheme">
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CameraPreviewActivity"
+            android:label="@string/title_new_test"
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
+        </activity>
+        <activity
+            android:name=".NewTestActivity"
+            android:keepScreenOn="true"
+            android:label="@string/title_new_test"
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
+        </activity>
+        <activity
+            android:name=".TestVerificationActivity"
+            android:label="@string/title_test_verification"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".TestEditionActivity"
+            android:label="@string/title_test_edition"
+            android:parentActivityName=".MyCyclesActivity" />
+        <activity
+            android:name=".MyCyclesActivity"
+            android:label="@string/title_my_tests"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
+        </activity>
+        <activity
+            android:name=".ChartsActivity"
+            android:label="@string/title_my_cycles"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
+        </activity>
+        <activity
+            android:name=".DateSelectionActivity"
+            android:label="@string/title_date_selection"
+            android:noHistory="true"
+            android:theme="@style/FtaDialogTheme" />
+        <activity
+            android:name=".CycleEditionActivity"
+            android:label="@string/title_cycle_edition"
+            android:noHistory="true"
+            android:theme="@style/FtaDialogTheme" />
+        <activity
+            android:name=".InformationActivity"
+            android:label="@string/information">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
+        </activity>
+        <activity
+            android:name=".HelpActivity"
+            android:label="@string/help_title_activity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
+        </activity>
+
+        <service
+            android:name=".TestsService"
+            android:enabled="true"
+            android:exported="false" />
+    </application>
+</manifest>

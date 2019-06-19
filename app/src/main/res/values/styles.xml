@@ -1,0 +1,55 @@
+<resources>
+
+    <style name="FtaActionBar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+
+    <style name="FtaTitleLayout">
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textSize">@dimen/sizeTextTitle</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+    </style>
+
+    <style name="FtaParagraphLayout">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">@dimen/sizeTextParagraph</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+    </style>
+
+    <style name="FtaHelpLayout">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">@dimen/sizeTextTitle</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:paddingTop">@dimen/helpPaddingTop</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+    </style>
+
+    <style name="FtaButtonColorless" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:textSize">@dimen/sizeTextPanelTestType</item>
+        <item name="android:background">@drawable/border_button_bg</item>
+    </style>
+
+    <style name="FtaAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">#FF4970</item>
+    </style>
+
+    <style name="FtaTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="FtaTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

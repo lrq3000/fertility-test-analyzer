@@ -1,0 +1,373 @@
+<resources>
+    <string name="app_name">Fertility Test Analyzer</string>
+
+    <string name="navigation_open">Abrir menú</string>
+    <string name="navigation_close">Cerrar menú</string>
+
+    <!-- Camera View -->
+    <string name="camera_not_found">Cámara no reconocida.</string>
+    <string name="camera_access_error">Error al acceder a la cámara.</string>
+
+    <!-- Notifications -->
+    <string name="notify_title">Fertility Test Analyzer</string>
+    <string name="notify_ok">OK</string>
+
+    <!-- Home Activity -->
+    <string name="new_test">Nuevo Test</string>
+    <string name="my_tests">Mis Ciclos</string>
+    <string name="my_cycles">Gráficas</string>
+    <string name="information">Información</string>
+    <string name="settings">Ajustes</string>
+    <string name="help">Ayuda</string>
+    <string name="desc_new_test">Crea un nuevo test</string>
+    <string name="desc_my_tests">Lista con mis ciclos, mis tests y toda su información</string>
+    <string name="desc_my_cycles">Gráficas de pigmentación de mis ciclos</string>
+    <string name="desc_information">Información sobre fertilidad y concepción</string>
+    <string name="desc_settings">Ajustes de la aplicación</string>
+    <string name="desc_help">Ayuda sobre la aplicación</string>
+    <string name="home_msg_title">¡Gracias por descargar Fertility Test Analyzer!</string>
+    <string name="home_msg_content">Esta aplicación te ayuda a interpretar tests de ovulación y embarazo
+        en tiras de cualquier marca comercial. Si aún no los tienes, puedes adquirirlos fácilmente
+        en tiendas online.</string>
+
+    <!-- New Test Activity error messages -->
+    <string name="title_new_test">Nuevo Test</string>
+    <string name="err_dark">La imagen es demasiado oscura</string>
+    <string name="title_test_verification">Verificación del test</string>
+
+    <!-- Test Edition Activity -->
+    <string name="title_test_edition">Nuevo Test</string>
+    <string name="pigmentation">Pigmentación</string>
+    <string name="test_type">Tipo de Test</string>
+    <string name="test_interpretation">Interpretación del test</string>
+    <string name="select_test">Por favor, selecciona un test.</string>
+    <string name="test_date">Fecha del test</string>
+    <string name="text_cycle">Ciclo</string>
+    <string name="text_new_cycle">Nuevo Ciclo</string>
+    <string name="cycle_help">La fecha del ciclo corresponde al <b>primer día de tu periodo</b>. Se puede cambiar más adelante.</string>
+    <string name="brand">Marca</string>
+    <string name="brand_hint">Escribe la marca del test aquí</string>
+    <string name="note">Nota</string>
+    <string name="note_hint">Escribe tus notas aquí</string>
+    <string name="open_img">Abrir foto del test</string>
+
+    <!-- Test Interpretation -->
+    <string name="not_pregnant"><b>No embarazada</b>\nLa pigmentación de la línea de test es menor que el umbral establecido para embarazo (5%).</string>
+    <string name="pregnant"><b>¡Embarazada!</b>\nFelicidades, la pigmentación de la línea de test es igual o mayor que el umbral establecido para embarazo (5%).</string>
+    <string name="ovulating"><b>En tu ventana fértil</b>\nLa pigmentación de la línea de test es igual o mayor que la pigmentación de la línea de control.
+    Probablemente ovularás en los próximos tres días.</string>
+    <string name="not_ovulating"><b>No estás entrando en tu ventana fértil</b>\nLa pigmentación de la línea de test es menor que la de la línea de control, por lo
+    que no parece que vayas a ovular en los proximos días.\nSin embargo, puedes estar en tu ventana fértil si has obtenido resultados positivos en los últimos tres días.</string>
+
+    <!-- Panel Test Type -->
+    <string name="ovulation">Ovulación</string>
+    <string name="pregnancy">Embarazo</string>
+
+    <!-- My Cycles Activity -->
+    <string name="title_my_tests">Mis Ciclos</string>
+    <string name="cycle_days">%1$d días</string>
+    <string name="cycle_header">Ciclo %1$s</string>
+    <string name="pigment_percent">%1$d%%</string>
+
+    <!-- Charts Activity -->
+    <string name="title_my_cycles">Gráficas</string>
+    <string name="chart_pigmentation">% pigmentación</string>
+    <string name="chart_days">Día del ciclo</string>
+    <string name="chart_cycle">Ciclo: %1$s</string>
+    <string name="chart_cycles">Comparativa de %1$d ciclos</string>
+    <string name="chart_title">GRÁFICA DE COMPARACIÓN DE CICLOS</string>
+    <string name="chart_list_title">Lista de mis ciclos</string>
+    <string name="chart_list_expl">Pulsa sobre el ciclo para añadirlo o quitarlo de la gráfica.</string>
+    <string name="chart_long_cycles">Los ciclos demasiado grandes ralentizan mucho la gráfica.</string>
+
+    <!-- Cycle Edition and Date Selection Activities -->
+    <string name="title_cycle_edition">Fecha de comienzo de Ciclo</string>
+    <string name="title_date_selection">Selección de Fechas</string>
+
+    <!-- Dialogs -->
+    <string name="delete_cycle_title">Borrar un Ciclo</string>
+    <string name="delete_empty_cycle_message">¿Estás segura de querer borrar este ciclo?</string>
+    <string name="delete_first_cycle_message">Estás a punto de borrar el primer ciclo registrado. Si continúas,
+            los tests de este ciclo se borrarán también.
+            \n¿Quieres continuar?</string>
+    <string name="delete_cycle_message">Estás a punto de borrar un ciclo. ¿Qué quieres hacer con sus tests?
+            \Mover todos los tests de este ciclo al ciclo anterior.
+            \nBorrar el ciclo y todos sus tests.</string>
+    <string name="delete_test_title">Borrar este test</string>
+    <string name="delete_test_message">¡Perderás toda la información!</string>
+    <string name="delete_yes">Borrar</string>
+    <string name="delete_merge">Mover Tests</string>
+    <string name="delete_all">Borrar Todo</string>
+    <string name="delete_no">Cancelar</string>
+
+    <!-- Navigation Bar -->
+    <string name="navbar_home">Inicio</string>
+    <string name="navbar_new_test">Nuevo Test</string>
+    <string name="navbar_my_tests">Mis Ciclos</string>
+    <string name="navbar_my_cycles">Gráficas</string>
+    <string name="navbar_information">Información</string>
+    <string name="navbar_app">Aplicación</string>
+    <string name="navbar_settings">Ajustes</string>
+    <string name="navbar_help">Ayuda</string>
+    <string name="navbar_about">Autores</string>
+
+    <!-- Sharing the app -->
+    <string name="share_text">¡¡Tienes que ver esta app de fertilidad!! %1$s</string>
+    <string name="share_title">Compartir app con...</string>
+    <string name="share_error">Se produjo un error abriendo la URI.</string>
+
+    <!-- Action Bar -->
+    <string name="subtitle_actionbar">AYUDANDO A MUJERES EN TODO EL MUNDO</string>
+
+    <!-- Settings Activity -->
+    <string name="title_activity_settings">Ajustes</string>
+
+    <string name="pref_storage">Almacenamiento</string>
+    <string name="pref_saving_pict">Guardar imágenes</string>
+    <string name="pref_saving_expl">Los datos asociados al test se guardan de todas formas</string>
+
+    <string name="pref_information">Información</string>
+    <string name="pref_ovulation_brand">Marca del test de ovulación por defecto</string>
+    <string name="pref_brand_hint">Escribe la marca aquí</string>
+    <string name="pref_pregnancy_brand">Marca del test de embarazo por defecto</string>
+    <string name="pref_display_preg_brand">Escribe la marca aquí</string>
+
+    <string name="pref_version">Versión</string>
+    <string name="pref_clear_title">Restablecer los ajustes</string>
+    <string name="pref_clear">Toca aquí para borrar todas tus preferencias.</string>
+    <string name="pref_reset">Preferencias borradas.</string>
+
+    <string name="pref_usability">Usabilidad</string>
+
+    <string name="pref_torch">Usar el flash cuando se necesite para el autoenfocado</string>
+    <string name="pref_torch_expl">El flash ayuda a que la cámara enfoque mejor si detecta falta de luz, pero no se mantendrá encendido durante la adquisición de la imagen</string>
+    <string name="pref_notes">Notas siempre visibles</string>
+    <string name="pref_notes_expl">Si quieres que las notas de los tests estén siempre visibles en la lista de tests dentro de Mis Ciclos</string>
+    <string name="pref_camera">Mostrar de nuevo los consejos sobre el uso de la cámara</string>
+    <string name="pref_camera_expl">Si quieres que la información sea visible la próxima vez que saques una foto</string>
+
+    <!--- Information Activity -->
+    <string name="info_title_teststrips">Test en tiras</string>
+    <string name="info_teststrips">Un test de formato tira es una herramienta de diagnóstico básica y barata que se usa para determinar los cambios
+        hormonales en la orina de una persona. Tiene una almohadilla química que reacciona cambiando de color cuando se sumerge en la orina durante unos
+        pocos segundos.\n\n
+        Se pueden usar test en tiras para predecir el momento de ovulación de una mujer (test de ovulación) o determinar si está embarazada
+        (test de embarazo).</string>
+    <string name="info_title_ovulation">Test de Ovulación en Tiras</string>
+    <string name="info_ovulation1">Tanto si estás intentando quedarte embarazada como si quieres prevenir un embarazo, los tests de ovulación
+        son una herramienta muy útil para conocer cuáles son tus días fértiles. Estos tests te ayudan a predecir con antelación cuándo se
+        producirá la ovulación y por tanto tu pico de fertilidad. Otros métodos como las gráficas de temperatura basal indican cuándo ha sido
+        la ovulación.
+        \n\nCada mes a mitad de ciclo, tu cuerpo aumenta su producción de Hormona Luteinizante (HL), lo que provoca la liberación de uno o más óvulos.
+        Cuando el test muestra el primer resultado positivo, está indicando que ovularás en los próximos tres días. El embarazo es técnicamente
+        posible sólo durante los cinco días previos y el mismo día de la ovulación.</string>
+    <string name="info_ovulation2">1. ¿Cómo funcionan?\n\n
+        Los tests tienen dos almohadillas químicas, una que muestra cualitativamente la presencia de HL en
+        la orina y otra que se emplea como línea de control para corroborar que el test funcionó correctamente. Esta línea de control también se emplea como
+        base de color para interpretar los resultados. Si la línea del test es del mismo tono o más oscura que la línea de control, significa que ovularás en los
+        próximos días. Cuando la línea del test es más clara que la de control, significa que tu cuerpo no ha liberado aún su pico de HL.
+        \n\n2. ¿Cuándo es el mejor momento del día para hacer un test de ovulación?\n\n
+        Desde las 10 de la mañana hasta primeras horas de la noche. Esto se debe
+        a que la HL se sintetiza en tu cuerpo a primeras horas de la mañana y aparece en la orina a lo largo del día.
+        \n\n3. ¿Debería hacerme el test a la misma hora cada día?\n\n
+        Sí, para optimizar la exactitud de los resultados haz los test aproximadamente a la misma hora.
+        También se recomienda reducir la ingesta de líquidos alrededor de 2 horas antes, ya que una muestra diluida de orina puede dificultar la
+        detección del pico de HL.
+        \n\n4. ¿Cuándo es el mejor momento en el que tener relaciones para incrementar las probabilidades de concebir?\n\n
+        Después de un resultado positivo, se recomienda tenerlas el mismo día del pico de HL y los tres días posteriores.
+        No obstante, muchos médicos recomiendan mantener relaciones sexuales cada dos días a lo largo del ciclo si estáis intentando concebir,
+        especialmente si tienes ciclos irregulares.
+        \n\n5. ¿Hay otros signos o síntomas de la ovulación?\n\n
+        Sí, un incremento brusco de temperatura basal es un signo claro de que se ha ovulado. Si
+        mides tu temperatura basal diariamente, serás capaz de decir cuándo el óvulo ha sido liberado. Sin embargo, solamente lo podrás decir un
+        día después de la ovulación. Las molestias que algunas mujeres sienten al ovular, también es otro signo. La abundancia de flujo fértil
+        (similar a la clara de huevo) es otro síntoma que aparece durante tu ventana fértil. Después de la ovulación, el aumento de los niveles
+        de progesterona y el decrecimiento de los estrógenos ocasionará que la calidad y cantidad de flujo disminuyan, haciéndose menos fértil
+        (pegajoso, opaco, amarillento/blanquecino, consistencia por la que mantiene la forma).
+        Finalmente, la localización del cérvix, o cuello del útero, puede indicarte que la ovulación está cerca. A medida que te aproximas a la
+        ovulación, tu cérvix se vuelve blando, alto, abierto y húmedo. Después de la ovulación estos signos se invierten y tu cérvix se vuelve
+        firme, bajo, cerrado y seco.</string>
+    <string name="info_title_pregnancy">Test de Embarazo en Tiras</string>
+    <string name="info_pregnancy1">Igual que los test de ovulación, los test de embarazo también funcionan detectando la presencia de cierta hormona en
+        la orina. Cuando un óvulo fertilizado se implanta en la pared uterina, las membranas que recubren al pequeño embrión comienzan a segregar Gonadotropina
+        Coriónica Humana (GCH). Esta hormona puede ser detectada en la orina de 7 a 14 días después de la fertilización. El nivel de GCH alcanza su máximo durante
+        el segundo mes de embarazo, luego decrece. Aunque bajo, el nivel de GCH se mantiene constante hasta el parto.</string>
+    <string name="info_pregnancy2">Algunos test de embarazo son lo suficientemente sensibles como para detectar trazas de GCH antes de la primera falta de regla.
+        Verás que las concentraciones de GCH se miden en miliUnidades Internacionales por mililitro (mUI/ml). Un test con una sensibilidad de 20 mUI/ml
+        es más sensible que uno con una sensibilidad de 50 mUI/ml.
+        \n\n1. ¿Cómo funcionan?\n\n
+        Este tipo de test de embarazo tienen dos almohadillas químicas, una que muestra cualitativamente la presencia del GCH en
+        la orina y otra que se emplea como línea de control para controlar su correcto funcionamiento. Cuando la línea de test aparece, incluso si
+        es muy tenue, significa que estás embarazada.
+        \n\n2. ¿Cuándo es el mejor momento del día para hacer un test de embarazo?\n\n
+        Al despertarte, la primera orina del día es la mejor, puesto que la hormona está más concentrada.
+        \n\n3. ¿Cuándo puedo obtener mi primer test de embarazo positivo?\n\n
+        Los test de 20mUI/hCG ofrecen una sensibilidad mayor y, por tanto, mayor capacidad
+        de detectar la hormona antes. Esto significa que puedes empezar a hacer tests entre el séptimo y el décimo día después de la ovulación.
+        Aunque un test negativo en este intervalo de tiempo no indica necesariamente que no estés embarazada, uno positivo sí que indica que lo estás.</string>
+    <string name="info_title_fta">Fertility Test Analyzer</string>
+    <string name="info_fta1">La mayoría de las veces, los resultados de los test de tiras no son claros y muchas mujeres los encuentran difíciles de leer.
+        Puede ser realmente frustrante no tener una respuesta en la que confíes, especialmente si llevas tiempo intentando concebir. Por esta razon hemos
+        creado Fertility Test Analyzer.</string>
+    <string name="info_fta2">Fertility Test Analyzer es una aplicación que ayuda a las mujeres a interpretar correctamente los resultados
+        de los test de ovulación y embarazo. Usando un algoritmo propio, la aplicación reconoce el nivel de pigmentación de la línea de test y te ofrece
+        esa respuesta tan esperada.
+        \n\n¡Pero esta no es la única herramienta que te ofrece la aplicación! Puedes almacenar los resultados de tus tests, estudiar tus evoluciones hormonales
+        durante cada ciclo e incluso hacer un seguimiento de la fase inicial de tu embarazo.
+        \n\n¡Es superfácil de usar, útil y muy práctica!
+        \n\nFertility Test Analyzer también te ayuda a ahorrar dinero puesto que ahora puedes comprar los test más baratos del mercado, los test en tiras,
+        y hacerte pruebas todos los días, sabiendo que por fin los resultados son de fiar.</string>
+
+    <!-- Help Activity -->
+    <string name="help_title_activity">Ayuda</string>
+    <string name="help_how_to">¿Cómo empezar?</string>
+    <string name="help_follow">Sigue estos pasos para comenzar a usar la aplicación:</string>
+    <string name="help_step_one">PASO 1</string>
+    <string name="help_step_two">PASO 2</string>
+    <string name="help_step_three">PASO 3</string>
+    <string name="help_step_four">PASO 4</string>
+    <string name="help_step_five">PASO 5</string>
+
+    <string name="help_one_text">Haz una fotografía del test usando la cámara de Nuevo Test.</string>
+    <string name="help_two_text">Introduce algunos datos sobre el test.</string>
+    <string name="help_three_text">Lee el resultado del test y su interpretación.</string>
+    <string name="help_four_text">Organiza tus tests utilizando la lista de Mis Ciclos.</string>
+    <string name="help_five_text">Analiza tus datos usando la herramienta Gráficas.</string>
+
+    <string name="help_mask_title">¿Cómo saco una foto de una tira de test?</string>
+    <string name="help_mask1">Fertility Test Analyzer te proporciona tres tamaños de máscara diferentes entre los que elegir.
+        Selecciona la que mejor se adapte a tus necesidades. Luego sitúa la tira de test dentro de la máscara que se muestra
+        en la pantalla.</string>
+    <string name="help_mask2">Es imprescindible que coloques el test de modo que el asa esté a la derecha, la línea de control
+    dentro del rectángulo y la línea de test aparezca dentro de los corchetes.</string>
+
+    <string name="help_good_pic_title">¡Una buena foto implica mayor exactitud en tus resultados!</string>
+    <string name="help_good_pic1">Fertility Test Analyzer depende de la buena calidad de tus fotos para ofrecer los mejores resultados.
+        Si la cámara no tiene una buena resolución, va a ser difícil aprovechar al máximo las ventajas que ofrece la aplicación.</string>
+    <string name="help_good_pic2">Tienes que tener en cuenta que tanto la resolución de tu cámara como una buena iluminación son factores críticos para
+        producir fotos óptimas. Te recomendamos encarecidamente que apoyes los codos sobre una superficie horizontal, coloques el test sobre una
+        superficie blanca y utilices una buena iluminación cuando hagas las fotografías.</string>
+
+    <string name="help_percentage_title">¿Qué significa el porcentaje dado por la aplicación?</string>
+    <string name="help_percentage_expl1">La aplicación compara el nivel de pigmentación de la línea de test con el de la línea de control
+        y da un porcentaje. Así, el porcentaje es el valor relativo de la pigmentación de la línea de test con respecto a la de la línea de control.
+        Por ejemplo:</string>
+    <string name="help_percentage_expl2">0% -  significa que la app no ha detectado ninguna pigmentación en la línea de test.</string>
+    <string name="help_percentage_expl3">40% - significa que la pigmentación de la línea de test es un 60% menos intensa que la de la
+        línea de control.</string>
+    <string name="help_percentage_expl4">100% - significa que la pigmentación de la línea de test es igual que la de control.</string>
+    <string name="help_percentage_expl5">120% - significa que la pigmentación de la línea de test es un 20% más intensa que la
+        de la línea de control.</string>
+
+    <string name="help_threshold_title">¿Por qué hay un umbral de pigmentación para los test de embarazo?</string>
+    <string name="help_threshold1">Fertility Test Analyzer establece un umbral (5% de pigmentación) para comenzar a considerar un test de embarazo como positivo.</string>
+    <string name="help_threshold2">Esto es importante para prevenir que pequeños errores en la medida (inherentes a todos los sistemas de medición) sean considerados
+        como falsos positivos.</string>
+
+    <string name="help_brand_title">¿Debería utilizar siempre la misma marca de test para comparar los resultados?</string>
+    <string name="help_brand">Sí, es muy importante utilizar siempre la misma marca de test de ovulación o embarazo porque tienden a diferir en la cantidad de
+        pigmento que emplean y los resultados pueden no mostrar consistencia.</string>
+
+    <string name="help_focus_title">¿Cómo puedo obtener fotos bien enfocadas?</string>
+    <string name="help_focus1">Te recomendamos encarecidamente que apoyes los codos sobre una superficie estable, deposites el test sobre una superficie blanca,
+        y que uses buena iluminación. La mejor luz es la natural diurna (siendo óptima la del sol indirecto), por ser difusa y blanca, produciendo una iluminación
+        uniforme, sin reflejos y que no afecta al color.</string>
+    <string name="help_focus2">A veces es difícil conseguir que las fotos queden enfocadas. En estos casos se puede tocar la pantalla para pedir a la
+        cámara que intente un enfoque manual sobre ese área. Por defecto la aplicación utiliza el flash como ayuda al enfoque cuando
+        lo considera necesario (la imagen está algo oscura), esta funcionalidad se puede desactivar en Ajustes. Fíjate que una
+        vez que realizas un enfoque manual, la cámara mantiene fija la mejor configuración que pudo conseguir, si modificas la vista
+        (mueves el test o el dispositivo), tendrás que tocar la pantalla para lanzar otro ciclo de enfoque.</string>
+    <string name="help_focus3">Si sigues teniendo problemas para encuadrar la tira de test en la máscara de manera que quede enfocada, dispones
+        de otra herramienta: el zoom. No todas las cámaras soportan zoom. Si tu dispositivo sí lo hace, verás un deslizador en la pantalla de la
+        cámara que permite aumentar el tamaño de la imagen. El aumento suele hacerse por software y, por tanto, la imagen capturada tendrá algo
+        menos de calidad. Pero esto no debería ser un problema.</string>
+    <string name="help_focus4">Estos consejos dependen de las condiciones de luz, de tus tiras de test y de tu dispositivo, así que tendrás que hacer
+        pruebas hasta encontrar la configuración que mejor se adapta a tu caso. Para ayudarte en caso de que tengas muchas dificultades, hemos
+        incluido tres tamaños de máscara que se seleccionan en la parte superior de la pantalla de la cámara. Cuanto menor sea la anchura de la
+        máscara, más lejos podrás enfocar y, por lo tanto, más fácil te resultará que la imagen se vea nítida. No obstante, cuanto más alejes la
+        cámara del test, menos resolución tendrá la imagen y por tanto menos precisión los resultados.</string>
+
+    <string name="help_contrast_title">¿Por qué dice contraste bajo en la línea de control?</string>
+    <string name="help_contrast">Esto quiere decir que necesitas mejor iluminación para tomar una buena foto. Intenta ponerte junto a una ventana o activar
+        el flash usando el icono de la parte superior de la pantalla (sólo disponible si tu dispositivo tiene esta característica).</string>
+
+    <string name="help_qualitative_title">Transformar datos cualitativos en cuantitativos, ¿cómo es de exacto?</string>
+    <string name="help_qualitative">Los test en tiras ofrecen resultados basados en el nivel de pigmentación de una pequeña línea, estos son datos cualitativos
+        por definición. No ofrecen valores numéricos para evaluar los resultados, lo que con frecuencia conlleva problemas de interpretación.
+        \n\nFertility Test Analyzer ofrece una solución analizando el nivel de pigmentación del test, extrayendo el porcentaje y dando la interpretación correcta. Sin embargo,
+        la exactitud del valor numérico ofrecido por la aplicación depende de un número de factores: la calidad del test, cómo está de diluida la orina, la calidad de la
+        cámara usada, tus habilidades para sacar una buena fotografía y una correcta iluminación. Esto significa que los valores obtenidos no pueden ser tomados
+        como valores exactos, sólo un laboratorio puede darte esos resultados. No obstante, en nuestras pruebas normalmente conseguimos una precisión mayor del 95%.\n\n
+        Usa la aplicación bajo tu propia responsabilidad. No la utilices para evitar el embarazo
+        o para cualquier otra actividad en la que se necesite una mayor exactitud. Por favor, consulta a tu médico sobre cualquier duda de salud.</string>
+
+    <!-- Camera Activity -->
+    <string name="cam_torch_on">On</string>
+    <string name="cam_torch_off">Off</string>
+    <string name="cam_zoom">Zoom</string>
+    <string name="cam_mask">Máscara</string>
+    <string name="cam_alert_message">Pon el test dentro de la máscara y sobre una superficie blanca</string>
+    <string name="cam_alert_button">OK</string>
+    <string name="dont_show_again">No volver a mostrar.</string>
+
+    <!-- Cycle Edition Activity -->
+    <string name="cedit_date">Selecciona una fecha</string>
+    <string name="cedit_accept">Aceptar</string>
+    <string name="date_limited">La fecha seleccionada se restringió a los límites válidos.</string>
+
+    <!-- Test Verification Activity -->
+    <string name="cam_save_on">Guardar Foto</string>
+    <string name="cam_save_off">No Guardar Foto</string>
+    <string name="cam_low_res_title">Imagen de baja calidad</string>
+    <string name="cam_low_res">La detección de la línea ha fallado.
+        \nPulsa el botón RECALCULAR para procesar la imagen en Modo Baja Precisión (menos exacto que el Modo Normal)
+        o descarta la imagen e inténtalo de nuevo.</string>
+    <string name="cam_low_res_note">Test obtenido en Modo de Baja Precisión</string>
+
+    <!-- My Cycles Activity -->
+    <string name="mcycles_expl1">El nuevo ciclo debe empezar después del ciclo anterior más un día.\n</string>
+    <string name="mcycles_expl2">El nuevo ciclo debe empezar antes del primer test para que no quede ningún test desasignado.</string>
+    <string name="mcycles_expl3">El nuevo ciclo debe empezar antes del siguiente ciclo menos un día.</string>
+    <string name="mcycles_expl4">Sin opciones disponibles</string>
+    <string name="mcycles_expl5">Lo sentimos, no hay espacio para crear un ciclo nuevo. Este ciclo está al final de un ciclo existente y
+        al inicio de otro.</string>
+    <string name="mcycles_ok">OK</string>
+    <string name="mcycles_deleted">Test borrado</string>
+
+    <!-- New Test Activity -->
+    <string name="ntest_camera_perm">Se requieren acceso a la cámara para hacer fotos de nuevos tests.</string>
+
+    <!-- Test Edition Activity -->
+    <string name="ted_expl1">Lo sentimos, esta fecha coincide con la de un ciclo existente.</string>
+    <string name="ted_expl2">Cuando se crea un ciclo, su fecha no puede coincidir con la de otro ciclo existente.\n</string>
+    <string name="ted_expl3">El ciclo debe comenzar antes o en la misma fecha que este test.</string>
+
+    <!-- Test Verification Activity -->
+    <string name="tverific_warn_control_contrast">Contraste bajo en la línea de control. Mejora el posicionamiento.</string>
+    <string name="tverific_warn_handle_contrast">Contraste bajo en la empuñadura del test. Mejora el posicionamiento.</string>
+    <string name="tverific_permision_denied">Permiso denegado, la foto no se pudo guardar.</string>
+    <string name="tverific_permision_needed">Se necesitan permisos</string>
+    <string name="tverific_permision_expl">Esta aplicación puede guardar las fotos de tus tests en tu teléfono si le das permiso de escritura en tu tarjeta SD.</string>
+    <string name="tverific_photo_saved">Foto guardada en la galería.</string>
+    <string name="tverific_pigment">Pigmentación:</string>
+    <string name="tverific_error_control_not_found">Línea de control no encontrada</string>
+    <string name="tverific_error_control_contrast">No hay suficiente contraste en la línea de control</string>
+    <string name="tverific_error_position_light">Comprueba el posicionamiento del test y la iluminación</string>
+    <string name="tverific_error_line_not_found">Línea no encontrada</string>
+    <string name="tverific_fatal">Ha sido imposible detectar la línea</string>
+
+    <!-- Light Tip Activity -->
+    <string name="tip_problems">¿Estás teniendo problemas?</string>
+    <string name="tip_still_problems">También&#8230;</string>
+    <string name="tip_zoom">Intenta enfocar el test ligeramente lejos y luego emplea la herramienta
+        de zoom de la parte superior de la pantalla para situar el test dentro de la máscara.</string>
+    <string name="tip_mask">Prueba con otra máscara distinta para hacer tus fotos.\n\nHay 3 opciones disponibles en la parte superior
+        de la pantalla. Cuanto menor sea el número, más fácil te resultará enfocar de lejos.</string>
+    <string name="tip_window">Intenta mejorar la iluminación colocando el test junto a una ventana.\n\nLa luz natural es la mejor para
+    obtener fotos más nítidas.</string>
+
+    <!-- Copyright notice -->
+    <string name="copyright">Copyright 2019 Colnix Technology
+    \n\nEsta app ha sido desarrollada por Pablo de Arquer y María Rodríguez.
+    \n\nhttps://www.colnix.com</string>
+</resources>

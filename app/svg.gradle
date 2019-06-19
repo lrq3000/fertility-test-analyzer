@@ -1,0 +1,237 @@
+/*
+ * Copyright 2019 Colnix Technology
+ *
+ * Licensed under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License. See the NOTICE file distributed with this
+ * work for additional information regarding copyright ownership.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+/**
+ * Gradle plugin that converts SVG graphics into PNG images in various resolutions.
+ * Include as:
+ *    apply from: 'svg.gradle'
+ * At the end of your build.gradle script.
+ *
+ * It takes SVG files from the src/main/svg folder (in no particular order) and
+ * converts them into the resources output as instructed. They appear in the res folder
+ * of the Android Studio project but are actually never copied into the src/main/res
+ * folder. Rebuild the project to update the resources.
+ *
+ * The SVG files must have the page properly set up (File -> Document properties):
+ *  - The page frame must define all the image area. The rest is ignored.
+ *  - The page dimensions must be set in pixels and match the desired image dimensions
+ *    in Android DPs at the medium density or baseline (mdpi or 160dpi).
+ *
+ * Place your SVGs in the svg folder using your favourite directory structure and then
+ * define the resources you need in this file, in between the "RESOURCES DEFINITION"
+ * labels.
+ * TODO: Check file dates to determine if an update is actually required.
+ * TODO: Move definitions to an XML file in the svg folder.
+ */
+
+if (!android)
+    throw new GradleScriptException("Android plugin required by SGV converted.")
+
+// Important directories
+def resDir = file(android.sourceSets.main.res.srcDirs[0])
+ext.svgDir = file(resDir.getParent() + "/svg")
+ext.svgOutputDir = file("${project.buildDir}/generated/svg")
+ext.defaultDpis = ["mdpi", "hdpi", "xhdpi", "xxhdpi", "xxhdpi"]
+android.sourceSets.main.res.srcDirs += svgOutputDir
+
+/**
+ * Internal function that makes the actual conversion of a single file invoking Inkscape.
+ */
+def convertSvgInternal(svg_file, png_file, density) {
+    def dpi
+    switch (density) {
+        case "ldpi":
+            dpi = "72"
+            break
+        case "mdpi":
+            dpi = "96"
+            break
+        case "hdpi":
+            dpi = "144"
+            break
+        case "xhdpi":
+            dpi = "192"
+            break
+        case "xxhdpi":
+            dpi = "288"
+            break
+        case "xxxhdpi":
+            dpi = "384"
+            break
+        default:
+            throw new InvalidUserDataException("Density \"" + density + "\" not supported.")
+            break
+    }
+
+    png_file.getParentFile().mkdirs()
+
+    def cmd = ["inkscape", "--export-dpi=" + dpi, "--export-png=" + png_file, svg_file]
+    //println cmd
+
+    def inkscape_error = false
+    def proc = cmd.execute()
+    //proc.in.eachLine { line -> println line }
+    proc.err.eachLine { line ->
+        if (line.contains("CRITICAL"))
+            inkscape_error = true
+        println line
+    }
+    proc.waitFor()
+
+    // proc.exitValue() is always 0
+    if (inkscape_error) {
+        println "[ERROR] Running command: \"" + cmd.join(" ") + "\""
+        throw new GradleException("SVG convertion error, see output for details.")
+    }
+}
+
+/**
+ * Function that converts an SVG file into PNGs.
+ */
+def convertSvg(svg_path, png_name = null, prefix = [], suffix = [], dpis = defaultDpis, dir = "drawable") {
+    def svg_file = new File(svgDir, "/" + svg_path)
+    if (!png_name) {
+        png_name = new File(svg_path).getName()
+        def pos = png_name.lastIndexOf(".");
+        if (pos > 0)
+            png_name = png_name.substring(0, pos);
+        png_name = png_name + ".png"
+    }
+
+    if (dpis.empty) {
+        def qualifiers = (prefix + suffix).join("-")
+        if (qualifiers)
+            qualifiers = "-" + qualifiers
+        def png_file = new File(svgOutputDir, "/" + dir + qualifiers + "/" + png_name)
+        convertSvgInternal(svg_file, png_file, "mdpi")
+    } else {
+        dpis.each {
+            def qualifiers = "-" + (prefix + it + suffix).join("-")
+            def png_file = new File(svgOutputDir, "/" + dir + qualifiers + "/" + png_name)
+            convertSvgInternal(svg_file, png_file, it)
+        }
+    }
+}
+
+/**
+ * Main task processing all the SVG resources.
+ */
+task processSgvs {
+    // Task dependencies
+    inputs.dir svgDir
+    outputs.dir svgOutputDir
+
+    // Conversion action
+    doLast {
+        svgDir.mkdirs()
+        delete svgOutputDir
+
+        /*** RESOURCES DEFINITION start here ***/
+        /* See these examples:
+         * Creates icon.png for the default densities (mdpi, hdpi, xhdpi, xxhdpi, xxhdpi):
+         *    convertSvg("icon.svg")
+         * It works the same if the SVG is in a subfolder (creates the R.drawable.icon resource):
+         *    convertSvg("icons/icon.svg")
+         * Specifies the output image name as button_add.png (so the id is R.drawable.button_add):
+         *    convertSvg("button/add.svg", "button_add.png")
+         * Adds two prefix qualifier to the resource directory, so the output goes to drawable-sw560dp-land-*dpi:
+         *    convertSvg("icon.svg", "icon.png", ["sw560dp", "land"])
+         * Adds one suffix qualifiers, the output folders are like drawable-*dpi-v7:
+         *    convertSvg("icon.svg", "icon.png", [], ["v7"])
+         * Remember that qualifiers have a specific order:
+         * https://developer.android.com/guide/topics/resources/providing-resources.html#AlternativeResources
+         * Specifies the densities required:
+         *    convertSvg("icon.svg", "icon.png", [], [], ["mdpi", "hdpi"])
+         * Creates icon.png for the default densities in the "mipmap" folder (so the id is R.mipmap.icon).
+         *    convertSvg("icon.svg", "icon.png", [], [], defaultDpis, "mipmap")
+         */
+        convertSvg("logo.svg", "logo.png", [], [], defaultDpis, "mipmap")
+        convertSvg("ico_warning_grey.svg")
+        convertSvg("ico_results.svg")
+        convertSvg("ico_data.svg")
+        convertSvg("ico_cam.svg")
+        convertSvg("ico_pic.svg")
+        convertSvg("ico_light.svg")
+        convertSvg("ico_equ.svg")
+        convertSvg("ico_pls.svg")
+        convertSvg("ico_threshold.svg")
+        convertSvg("ico_flash.svg")
+        convertSvg("ico_flashoff.svg")
+        convertSvg("ico_warning_white.svg")
+        convertSvg("ovulation.svg", "ovulation.png")
+        convertSvg("ovulation_es.svg", "ovulation.png", ["es"])
+        convertSvg("pregnancy.svg", "pregnancy.png")
+        convertSvg("pregnancy_es.svg", "pregnancy.png", ["es"])
+        convertSvg("logo_big.svg")
+        convertSvg("ico_zoomin.svg")
+        convertSvg("ico_zoomout.svg")
+        convertSvg("ico_save.svg")
+        convertSvg("ico_notsave.svg")
+        convertSvg("ico_clear.svg")
+        convertSvg("ico_ok.svg")
+        convertSvg("ico_lowres.svg")
+        convertSvg("ico_img.svg")
+        convertSvg("ico_cam_white.svg")
+        convertSvg("ovulation_land.svg", "ovulation_land.png")
+        convertSvg("ovulation_land_es.svg", "ovulation_land.png", ["es"])
+        convertSvg("pregnancy_land.svg", "pregnancy_land.png")
+        convertSvg("pregnancy_land_es.svg", "pregnancy_land.png", ["es"])
+        convertSvg("ovulation_560.svg", "ovulation_560.png")
+        convertSvg("ovulation_560_es.svg", "ovulation_560.png", ["es"])
+        convertSvg("pregnancy_560.svg", "pregnancy_560.png")
+        convertSvg("pregnancy_560_es.svg", "pregnancy_560.png", ["es"])
+        convertSvg("ico_phone.svg")
+        convertSvg("ico_chart.svg")
+        convertSvg("ico_tests.svg")
+        convertSvg("ico_threshold_560.svg")
+        convertSvg("ico_cam_560.svg")
+        convertSvg("ico_pic_560.svg")
+        convertSvg("ico_light_560.svg")
+        convertSvg("ico_equ_560.svg")
+        convertSvg("ico_pls_560.svg")
+        convertSvg("cam_expl_en.svg", "cam_expl.png")
+        convertSvg("cam_expl_es.svg", "cam_expl.png", ["es"])
+        convertSvg("ico_1on.svg")
+        convertSvg("ico_1off.svg")
+        convertSvg("ico_2on.svg")
+        convertSvg("ico_2off.svg")
+        convertSvg("ico_3on.svg")
+        convertSvg("ico_3off.svg")
+        convertSvg("window.svg")
+        convertSvg("zoom.svg")
+        convertSvg("mask.svg", "mask.png")
+        convertSvg("mascara.svg", "mask.png", ["es"])
+        convertSvg("mask_expl.svg", "mask_expl.png")
+        convertSvg("mascara_expl.svg", "mask_expl.png", ["es"])
+        convertSvg("mask_expl_560.svg", "mask_expl_560.png")
+        convertSvg("mascara_expl_560.svg", "mask_expl_560.png", ["es"])
+        convertSvg("ico_share.svg")
+        convertSvg("ico_about_grey.svg")
+
+        /*** RESOURCES DEFINITION end here ***/
+    }
+}
+
+// Task dependency to run before the resources are merged.
+preBuild.dependsOn processSgvs
+/*
+afterEvaluate {
+   mergeReleaseResources.dependsOn processSgvs
+}
+*/
+

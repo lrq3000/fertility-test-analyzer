@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+   <style name="FtaTheme" parent="Theme.AppCompat.Light.NoActionBar">
+      <item name="colorPrimary">@color/colorPrimary</item>
+      <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+      <item name="colorAccent">@color/colorAccent</item>
+
+      <item name="actionBarTheme">@style/FtaTheme.ActionBar</item>
+      <item name="actionBarStyle">@style/FtaActionBar</item>
+
+      <item name="android:clipToPadding">false</item>
+   </style>
+
+   <style name="FtaDialogTheme" parent="FtaTheme">
+      <item name="android:windowIsTranslucent">true</item>
+      <item name="android:windowBackground">@color/colorDialogBg</item>
+      <item name="android:windowContentOverlay">@null</item>
+      <item name="android:windowIsFloating">true</item>
+   </style>
+
+   <style name="FtaTheme.ActionBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+      <item name="collapsedTitleTextAppearance">@android:style/TextAppearance.Medium</item>
+   </style>
+
+</resources>

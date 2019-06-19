@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="?attr/actionBarSize"
+      style="?attr/actionBarStyle"
+      android:theme="?attr/actionBarTheme"
+      android:background="@drawable/action_bar_dark_bg">
+
+</android.support.v7.widget.Toolbar>
