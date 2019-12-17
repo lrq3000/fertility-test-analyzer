@@ -32,7 +32,7 @@ import java.util.GregorianCalendar;
 
 /**
  * This activity lets the user create a new cycle by the beginning date or change an existing one.
- *
+ * <p>
  * The date selected is returned but the database is not modified.
  */
 public class CycleEditionActivity extends AppCompatActivity
@@ -105,17 +105,16 @@ public class CycleEditionActivity extends AppCompatActivity
          init_date = new Date().getTime();
       GregorianCalendar date = new GregorianCalendar();
       date.setTimeInMillis(init_date);
-      date_picker.init(date.get(GregorianCalendar.YEAR), date.get(GregorianCalendar.MONTH),
-            date.get(GregorianCalendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener()
-            {
-               @Override
-               public void onDateChanged(DatePicker datePicker, int i, int i1, int i2)
-               {
-                  // It fires with the set of the year, but the user may want to select the month
-                  // and day.
-                  //acceptDate();
-               }
-            });
+      date_picker.init(date.get(GregorianCalendar.YEAR), date.get(GregorianCalendar.MONTH), date.get(GregorianCalendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener()
+      {
+         @Override
+         public void onDateChanged(DatePicker datePicker, int i, int i1, int i2)
+         {
+            // It fires with the set of the year, but the user may want to select the month
+            // and day.
+            //acceptDate();
+         }
+      });
 
       Button btn = (Button) findViewById(R.id.date_cancel);
       btn.setOnClickListener(new View.OnClickListener()

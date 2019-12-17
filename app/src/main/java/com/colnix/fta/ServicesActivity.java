@@ -44,6 +44,8 @@ public class ServicesActivity extends AppCompatActivity
       {
          TestsService.ServiceBinder binder = (TestsService.ServiceBinder) service;
          data = binder.getService();
+
+         onServicesReady();
       }
 
       @Override

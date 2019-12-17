@@ -109,9 +109,9 @@ public class ManualFocusView extends View
 
       //canvas.drawRect(focusArea, paint);
 
-      int vert_len = (int)(focusArea.height() * BRACKET_PERCENT);
-      int hor_len = (int)(focusArea.width() * BRACKET_PERCENT);
-      int corner = (int)(paint.getStrokeWidth() / 2);
+      int vert_len = (int) (focusArea.height() * BRACKET_PERCENT);
+      int hor_len = (int) (focusArea.width() * BRACKET_PERCENT);
+      int corner = (int) (paint.getStrokeWidth() / 2);
 
       canvas.drawLine(focusArea.left, focusArea.top + vert_len, focusArea.left, focusArea.top - corner, paint);
       canvas.drawLine(focusArea.left - corner, focusArea.top, focusArea.left + hor_len, focusArea.top, paint);

@@ -77,8 +77,7 @@ public class IntensityArea
       width = rect.width();
       height = rect.height();
       this.rect = new Rect(rect);
-      if(rect.left < 0 || width <= 0 || rect.top < 0 || height <= 0 ||
-            width > bitmap.getWidth() || height > bitmap.getHeight())
+      if(rect.left < 0 || width <= 0 || rect.top < 0 || height <= 0 || width > bitmap.getWidth() || height > bitmap.getHeight())
          throw new ArrayIndexOutOfBoundsException();
 
       intensity = new float[width * height];
@@ -89,7 +88,7 @@ public class IntensityArea
          {
             int pixel = bitmap.getPixel(rect.left + x, rect.top + y);
             int color = Color.red(pixel) + Color.green(pixel) + Color.blue(pixel);
-            float intens = (float)color / (3 * 256);
+            float intens = (float) color / (3 * 256);
             intensity[index + x] = 1.0f - intens;
          }
       }
@@ -147,6 +146,7 @@ public class IntensityArea
 
    /**
     * Removes margins from the area.
+    *
     * @returns false if the margins cannot be applied.
     */
    public boolean margin(int left, int top, int right, int bottom)
@@ -156,14 +156,14 @@ public class IntensityArea
 
    /**
     * Removes margins from the area.
+    *
     * @returns false if the margins cannot be applied.
     */
    public boolean margin(Rect r)
    {
       int width2 = width - r.left - r.right;
       int height2 = height - r.top - r.bottom;
-      if(r.left < 0 || r.top < 0 || r.right < 0 || r.bottom < 0 ||
-            width2 <= 0 || height2 <= 0)
+      if(r.left < 0 || r.top < 0 || r.right < 0 || r.bottom < 0 || width2 <= 0 || height2 <= 0)
          return false;
 
       if(r.left > 0 || r.top > 0 || r.right > 0)

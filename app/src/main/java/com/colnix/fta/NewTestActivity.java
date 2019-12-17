@@ -47,12 +47,12 @@ import java.io.IOException;
 
 /**
  * Strip test photo capture activity.
- *
+ * <p>
  * Lets the user take a picture of a strip test and extracts the pigmentation level from it.
  */
 public class NewTestActivity extends AppCompatActivity
 {
-   //static final String TAG = "NewTestActivity";
+   static final String TAG = "NewTestActivity";
 
    static final int REQUEST_IMAGE = 1;
    static final int REQUEST_PERM = 2;
@@ -86,6 +86,7 @@ public class NewTestActivity extends AppCompatActivity
     * Called when the activity is starting. This is where most initialization should go: calling
     * setContentView(int) to inflate the activity's UI, using findViewById(int) to programmatically
     * interact with widgets in the UI
+    *
     * @param savedInstanceState
     */
    @Override
@@ -110,7 +111,8 @@ public class NewTestActivity extends AppCompatActivity
 
       CheckBox check = (CheckBox) findViewById(R.id.check_torch);
       check.setVisibility(View.INVISIBLE);
-      check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+      check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+      {
          @Override
          public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
          {
@@ -171,21 +173,25 @@ public class NewTestActivity extends AppCompatActivity
 
       final SeekBar zoomBar = (SeekBar) findViewById(R.id.zoom_bar);
       zoomBar.setVisibility(View.INVISIBLE);
-      zoomBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+      zoomBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+      {
          @Override
-         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+         {
             if(!fromUser)
                return;
             camera.setZoom(progress);
          }
 
          @Override
-         public void onStartTrackingTouch(SeekBar seekBar) {
+         public void onStartTrackingTouch(SeekBar seekBar)
+         {
 
          }
 
          @Override
-         public void onStopTrackingTouch(SeekBar seekBar) {
+         public void onStopTrackingTouch(SeekBar seekBar)
+         {
 
          }
       });
@@ -220,7 +226,8 @@ public class NewTestActivity extends AppCompatActivity
       view.setVisibility(View.INVISIBLE);
 
       ImageButton ibtn = (ImageButton) findViewById(R.id.btn_capture);
-      ibtn.setOnClickListener(new View.OnClickListener() {
+      ibtn.setOnClickListener(new View.OnClickListener()
+      {
          @Override
          public void onClick(View v)
          {
@@ -229,16 +236,17 @@ public class NewTestActivity extends AppCompatActivity
       });
 
       Button btn = (Button) findViewById(R.id.btn_load);
-      btn.setOnClickListener(new View.OnClickListener() {
+      btn.setOnClickListener(new View.OnClickListener()
+      {
          @Override
          public void onClick(View v)
          {
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
             intent.setType("image/*");
-            startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQUEST_IMAGE);
+            startActivityForResult(Intent.createChooser(intent, getString(R.string.ntest_select_image)), REQUEST_IMAGE);
          }
       });
-      if(BuildConfig.DEBUG)
+      if(Config.isDevMode(this))
          btn.setVisibility(View.VISIBLE);
       else
          btn.setVisibility(View.GONE);
@@ -312,6 +320,7 @@ public class NewTestActivity extends AppCompatActivity
 
    /**
     * Sets the placeholder type preview.
+    *
     * @param type Type number 1
     */
    void setPlaceholder(int type)
@@ -331,8 +340,7 @@ public class NewTestActivity extends AppCompatActivity
    {
       focusIndicator.setFocusArea(null);
       camera.setActivity(this, focusIndicator);
-      if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M
-            || ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED)
+      if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M || ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED)
       {
          camera.setVisibility(View.VISIBLE);
       }
@@ -390,7 +398,8 @@ public class NewTestActivity extends AppCompatActivity
    @Override
    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
    {
-      switch (requestCode) {
+      switch(requestCode)
+      {
          case REQUEST_PERM:
             if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
             {
@@ -496,8 +505,9 @@ public class NewTestActivity extends AppCompatActivity
 
    /**
     * Picture taken event. Sends the image to the verification activity.
+    *
     * @param jpeg_data JPEG encoded image.
-    * @param bitmap raw pixels bitmap.
+    * @param bitmap    raw pixels bitmap.
     * @return true to continue the preview or false to stop it.
     */
    boolean onPictureTaken(Bitmap bitmap, byte[] jpeg_data)
@@ -514,6 +524,7 @@ public class NewTestActivity extends AppCompatActivity
 
    /**
     * Processes a preview frame and warn the user of possible defects.
+    *
     * @param bitmap
     * @param jpeg_data
     */

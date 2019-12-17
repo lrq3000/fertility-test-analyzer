@@ -23,6 +23,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -34,6 +35,8 @@ import android.widget.Toast;
  */
 public class MyCyclesActivity extends NavigationActivity
 {
+   static final String TAG = "MyCyclesActivity";
+
    static final int REQUEST_EDITCYCLE = 1;
 
    static final String CURRENT_DIALOG = "current_dialog";
@@ -84,11 +87,7 @@ public class MyCyclesActivity extends NavigationActivity
     */
    enum DialogId
    {
-      DLG_NONE,
-      DLG_LIKE,
-      DLG_RATE_STAR,
-      DLG_RATE_BABY,
-      DLG_FEEDBACK
+      DLG_NONE, DLG_LIKE, DLG_RATE_STAR, DLG_RATE_BABY, DLG_FEEDBACK
    }
 
    /**
@@ -123,7 +122,8 @@ public class MyCyclesActivity extends NavigationActivity
       installTypeButtons();
 
       View btn = findViewById(R.id.btn_add);
-      btn.setOnClickListener(new View.OnClickListener() {
+      btn.setOnClickListener(new View.OnClickListener()
+      {
          @Override
          public void onClick(View v)
          {
@@ -140,7 +140,8 @@ public class MyCyclesActivity extends NavigationActivity
       btn = findViewById(R.id.btn_edit);
       if(btn != null)
       {
-         btn.setOnClickListener(new View.OnClickListener() {
+         btn.setOnClickListener(new View.OnClickListener()
+         {
             @Override
             public void onClick(View v)
             {
@@ -159,6 +160,12 @@ public class MyCyclesActivity extends NavigationActivity
          currentDialog = DialogId.valueOf(state.getString(CURRENT_DIALOG, DialogId.DLG_NONE.name()));
       }
       init();
+   }
+
+   @Override
+   protected void onDestroy()
+   {
+      super.onDestroy();
    }
 
    /**
@@ -202,7 +209,8 @@ public class MyCyclesActivity extends NavigationActivity
       buttonTypeOvul = (RadioButton) findViewById(R.id.btn_type_ovulation);
       buttonTypePreg = (RadioButton) findViewById(R.id.btn_type_pregnancy);
 
-      buttonTypeOvul.setOnClickListener(new View.OnClickListener() {
+      buttonTypeOvul.setOnClickListener(new View.OnClickListener()
+      {
          @Override
          public void onClick(View v)
          {
@@ -221,7 +229,8 @@ public class MyCyclesActivity extends NavigationActivity
          }
       });
 
-      buttonTypePreg.setOnClickListener(new View.OnClickListener() {
+      buttonTypePreg.setOnClickListener(new View.OnClickListener()
+      {
          @Override
          public void onClick(View v)
          {

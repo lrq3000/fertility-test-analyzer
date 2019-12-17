@@ -26,6 +26,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -34,6 +35,8 @@ import android.widget.TextView;
 
 public class HomeActivity extends NavigationActivity
 {
+   static final String TAG = "HomeActivity";
+
    /**
     * Interface to handle notification results.
     */
@@ -41,6 +44,7 @@ public class HomeActivity extends NavigationActivity
    {
       /**
        * Executed at the end of the notification.
+       *
        * @param positive true if the user pressed the possitive button (yes, ok...)
        */
       void closed(boolean positive);
@@ -79,6 +83,10 @@ public class HomeActivity extends NavigationActivity
    /* State parameter */
    static final String NOTIFICATION_CLOSED = "notification_closed";
 
+   /**
+    * Flag saying that the notification is currently showing.
+    */
+   boolean notificationOpened;
 
    /**
     * Flag saying that the notification has been seen and closed by the user.
@@ -115,17 +123,17 @@ public class HomeActivity extends NavigationActivity
       // Called when the user clicks on New Test Button
       ImageButton btn = (ImageButton) findViewById(R.id.home_btn_newTest);
       btn.setOnClickListener(new View.OnClickListener()
-            {
-               @Override
-               public void onClick(View v)
-               {
-                  SharedPreferences prefs = Config.getPrefs(HomeActivity.this);
-                  prefs.edit().putBoolean(Config.PREF_FIRST_NEW_TEST, false).apply();
+      {
+         @Override
+         public void onClick(View v)
+         {
+            SharedPreferences prefs = Config.getPrefs(HomeActivity.this);
+            prefs.edit().putBoolean(Config.PREF_FIRST_NEW_TEST, false).apply();
 
-                  Intent intent = new Intent(HomeActivity.this, NewTestActivity.class);
-                  startActivity(intent);
-               }
-            });
+            Intent intent = new Intent(HomeActivity.this, NewTestActivity.class);
+            startActivity(intent);
+         }
+      });
       SharedPreferences prefs = Config.getPrefs(HomeActivity.this);
       if(prefs.getBoolean(Config.PREF_FIRST_NEW_TEST, true))
       {
@@ -206,6 +214,13 @@ public class HomeActivity extends NavigationActivity
       notificationClosed = false;
       if(savedInstanceState != null)
          notificationClosed = savedInstanceState.getBoolean(NOTIFICATION_CLOSED, false);
+      notificationOpened = false;
+   }
+
+   @Override
+   protected void onDestroy()
+   {
+      super.onDestroy();
    }
 
    /**
@@ -248,64 +263,46 @@ public class HomeActivity extends NavigationActivity
          ab.setDisplayShowHomeEnabled(false);
       }
 
+      if(notificationOpened)
+         return;
+
       SharedPreferences prefs = Config.getPrefs(this);
+      Intent intent = getIntent();
+      CharSequence msg = intent.getStringExtra(DATA_MESSAGE);
       if(prefs.getBoolean(Config.PREF_FIRST_OPEN, true))
       {
-         showNotification(getText(R.string.home_msg_title), getText(R.string.home_msg_content),
-               null, null, new NotifyListener()
+         showNotification(getText(R.string.home_msg_title), getText(R.string.home_msg_content), null, null, new NotifyListener()
          {
             @Override
             public void closed(boolean positive)
             {
-               Config.getPrefs(HomeActivity.this)
-                     .edit()
-                     .putBoolean(Config.PREF_FIRST_OPEN, false)
-                     .apply();
+               Config.getPrefs(HomeActivity.this).edit().putBoolean(Config.PREF_FIRST_OPEN, false).apply();
             }
          });
       }
-      else if(getIntent().getStringExtra(DATA_MESSAGE) != null && !notificationClosed)
+      else if(msg != null && !notificationClosed)
       {
-         showNotificationDialog();
-      }
-   }
+         CharSequence title = intent.getStringExtra(DATA_TITLE);
+         CharSequence pos = intent.getStringExtra(DATA_POSITIVE);
+         CharSequence neg = intent.getStringExtra(DATA_NEGATIVE);
+         final String uri = intent.getStringExtra(DATA_URI);
 
-   /**
-    * Shows the notification message dialog.
-    */
-   void showNotificationDialog()
-   {
-      Intent intent = getIntent();
-      CharSequence msg = intent.getStringExtra(DATA_MESSAGE);
-      CharSequence title = intent.getStringExtra(DATA_TITLE);
-      CharSequence pos = intent.getStringExtra(DATA_POSITIVE);
-      CharSequence neg = intent.getStringExtra(DATA_NEGATIVE);
-      final String uri = intent.getStringExtra(DATA_URI);
-
-      if(msg == null)
-         return;
-
-      if(title == null)
-         title = getString(R.string.notify_title);
-
-      if(pos == null)
-         pos = getText(R.string.notify_ok);
-
-      showNotification(title, msg, neg, pos, new NotifyListener()
-      {
-         @Override
-         public void closed(boolean positive)
+         showNotification(title, msg, neg, pos, new NotifyListener()
          {
-            notificationClosed = true;
-            if(!positive)
-               return;
-
-            if(uri != null)
+            @Override
+            public void closed(boolean positive)
             {
-               Config.goToUri(HomeActivity.this, uri);
+               notificationClosed = true;
+               if(!positive)
+                  return;
+
+               if(uri != null)
+               {
+                  Config.goToUri(HomeActivity.this, uri);
+               }
             }
-         }
-      });
+         });
+      }
    }
 
    /**
@@ -313,9 +310,21 @@ public class HomeActivity extends NavigationActivity
     */
    void showNotification(CharSequence title, CharSequence msg, CharSequence neg, CharSequence pos, final NotifyListener listener)
    {
+      if(msg == null)
+         return;
+
+      if(title == null || title.length() == 0)
+         title = getString(R.string.notify_title);
+
+      if(pos == null || pos.length() == 0)
+         pos = getText(R.string.notify_ok);
+
+      //Log.d(TAG, "showNotification: " + msg);
+
       AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.FtaAlertDialogStyle);
       builder.setTitle(title);
       builder.setMessage(msg);
+      builder.setCancelable(false);
       builder.setIcon(R.mipmap.logo);
       if(neg != null)
       {
@@ -324,6 +333,7 @@ public class HomeActivity extends NavigationActivity
             @Override
             public void onClick(DialogInterface dialogInterface, int i)
             {
+               notificationOpened = false;
                if(listener != null)
                   listener.closed(false);
             }
@@ -334,15 +344,19 @@ public class HomeActivity extends NavigationActivity
          @Override
          public void onClick(DialogInterface dialogInterface, int i)
          {
+            notificationOpened = false;
             if(listener != null)
                listener.closed(true);
          }
       });
       AlertDialog dlg = builder.create();
+
       dlg.show();
 
-      TextView text = (TextView)dlg.findViewById(android.R.id.message);
+      TextView text = (TextView) dlg.findViewById(android.R.id.message);
       if(text != null)
          text.setMovementMethod(LinkMovementMethod.getInstance());
+
+      notificationOpened = true;
    }
 }

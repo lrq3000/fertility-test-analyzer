@@ -380,7 +380,7 @@ public class CycleChartView extends HorizontalScrollView
       paintInter.setColor(COLOR_INTER);
       paintInter.setStyle(Paint.Style.FILL);
       paintInter.setStrokeWidth(2f);
-      paintInter.setPathEffect(new DashPathEffect(new float[] {10, 10}, 0));
+      paintInter.setPathEffect(new DashPathEffect(new float[]{10, 10}, 0));
       paintInter.setAntiAlias(true);
 
       paintInterArea = new Paint();
@@ -395,7 +395,7 @@ public class CycleChartView extends HorizontalScrollView
       paintData.setStrokeWidth(2f);
       paintData.setAntiAlias(true);
 
-      dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
+      dateFormatter = new SimpleDateFormat(Config.getDateFormat(context));
 
       dimensions = new ScrollDimensions(context);
       addView(dimensions);
@@ -541,8 +541,7 @@ public class CycleChartView extends HorizontalScrollView
       }
       else
       {
-         return String.format(getResources().getString(R.string.chart_cycle),
-               dateFormatter.format(new Date(cycles.get(0).start)));
+         return String.format(getResources().getString(R.string.chart_cycle), dateFormatter.format(new Date(cycles.get(0).start)));
       }
    }
 
@@ -601,7 +600,8 @@ public class CycleChartView extends HorizontalScrollView
 
    /**
     * Calculates the offset of the first cycle without drawing anything.
-    * @return  the offset of the first cycle detected in the last data update or -1 if none.
+    *
+    * @return the offset of the first cycle detected in the last data update or -1 if none.
     */
    int calculateFirstCycleOffset()
    {
@@ -622,11 +622,11 @@ public class CycleChartView extends HorizontalScrollView
          boolean previous = false;
          for(TestSample sample : data.samples)
          {
-            float sample_day = (float)(sample.date - data.start) / (1000 * 60 * 60 * 24);
+            float sample_day = (float) (sample.date - data.start) / (1000 * 60 * 60 * 24);
             if(end_day > 0 && sample_day > end_day)
             {
                float start_x = (start_day + 0.5f) * x_step;
-               return (int)start_x;
+               return (int) start_x;
             }
 
             if(sample.pigment >= inter_thres)
@@ -648,7 +648,7 @@ public class CycleChartView extends HorizontalScrollView
          if(end_day > 0)
          {
             float start_x = (start_day + 0.5f) * x_step;
-            return (int)start_x;
+            return (int) start_x;
          }
       }
 
@@ -657,7 +657,8 @@ public class CycleChartView extends HorizontalScrollView
 
    /**
     * Draws the graph or part of it.
-    * @return  the offset of the first cycle detected in the last data update or -1 if none.
+    *
+    * @return the offset of the first cycle detected in the last data update or -1 if none.
     */
    int drawGraph(Canvas canvas, int width, int height)
    {
@@ -692,7 +693,7 @@ public class CycleChartView extends HorizontalScrollView
          boolean previous = false;
          for(TestSample sample : data.samples)
          {
-            float sample_day = (float)(sample.date - data.start) / (1000 * 60 * 60 * 24);
+            float sample_day = (float) (sample.date - data.start) / (1000 * 60 * 60 * 24);
             if(end_day > 0 && sample_day > end_day)
             {
                float start_x = (start_day + 0.5f) * x_step;
@@ -700,7 +701,7 @@ public class CycleChartView extends HorizontalScrollView
                canvas.drawRect(start_x, 0, end_x, height, paintInterArea);
 
                if(firstCycleOffset == -1)
-                  firstCycleOffset = (int)start_x;
+                  firstCycleOffset = (int) start_x;
 
                start_day = -1;
                end_day = -1;
@@ -729,11 +730,11 @@ public class CycleChartView extends HorizontalScrollView
             canvas.drawRect(start_x, 0, end_x, height, paintInterArea);
 
             if(firstCycleOffset == -1)
-               firstCycleOffset = (int)start_x;
+               firstCycleOffset = (int) start_x;
          }
       }
 
-      float inter_y = height - ((float)inter_thres / yStep + 0.5f) * y_step;
+      float inter_y = height - ((float) inter_thres / yStep + 0.5f) * y_step;
       canvas.drawLine(0, inter_y, width, inter_y, paintInter);
 
       // Graphs
@@ -745,9 +746,9 @@ public class CycleChartView extends HorizontalScrollView
          float previous_y = 0f;
          for(TestSample sample : data.samples)
          {
-            float days = (float)(sample.date - data.start) / (1000 * 60 * 60 * 24);
+            float days = (float) (sample.date - data.start) / (1000 * 60 * 60 * 24);
             float x = (days + 0.5f) * x_step;
-            float y = height - ((float)sample.pigment / yStep + 0.5f) * y_step;
+            float y = height - ((float) sample.pigment / yStep + 0.5f) * y_step;
 
             canvas.drawCircle(x, y, sampleRadius, paintData);
 
@@ -766,7 +767,8 @@ public class CycleChartView extends HorizontalScrollView
 
    /**
     * Updates the chart layout.
-    * @return  the offset of the first cycle detected in the last data update or -1 if none.
+    *
+    * @return the offset of the first cycle detected in the last data update or -1 if none.
     */
    int update()
    {
@@ -806,8 +808,8 @@ public class CycleChartView extends HorizontalScrollView
       yFrame = new RectF(margin, margin + text_margin * 2, width - margin, height - margin - text_margin * 2);
       xFrame = new RectF(margin + label_margin, margin + text_margin * 2, width - margin, height - margin - text_margin);
 
-      xTicks = (int)(xFrame.width() / grid);
-      yTicks = (int)(yFrame.height() / grid);
+      xTicks = (int) (xFrame.width() / grid);
+      yTicks = (int) (yFrame.height() / grid);
 
       yStep = (((yMax / (yTicks - 1) - 1) / 10 + 1) * 10);
       if(yStep == 0)
@@ -824,9 +826,9 @@ public class CycleChartView extends HorizontalScrollView
       graph = null;
       try
       {
-         graph = Bitmap.createBitmap(graph_width, (int)yFrame.height(), Bitmap.Config.ARGB_8888);
+         graph = Bitmap.createBitmap(graph_width, (int) yFrame.height(), Bitmap.Config.ARGB_8888);
          Canvas canvas = new Canvas(graph);
-         firstCycleOffset = drawGraph(canvas, graph_width, (int)yFrame.height());
+         firstCycleOffset = drawGraph(canvas, graph_width, (int) yFrame.height());
       }
       catch(Exception | OutOfMemoryError e)
       {
@@ -841,7 +843,7 @@ public class CycleChartView extends HorizontalScrollView
 
       // Arrows
       leftArrow = new Path();
-      float arrow_x = xFrame.left + text_size/2;
+      float arrow_x = xFrame.left + text_size / 2;
       float arrow_y = xFrame.top + yFrame.height() / 2;
       leftArrow.moveTo(arrow_x, arrow_y);
       leftArrow.lineTo(arrow_x + text_size, arrow_y - text_size);
@@ -849,7 +851,7 @@ public class CycleChartView extends HorizontalScrollView
       leftArrow.close();
 
       rightArrow = new Path();
-      arrow_x = xFrame.right - text_size/2;
+      arrow_x = xFrame.right - text_size / 2;
       rightArrow.moveTo(arrow_x, arrow_y);
       rightArrow.lineTo(arrow_x - text_size, arrow_y - text_size);
       rightArrow.lineTo(arrow_x - text_size, arrow_y + text_size);
@@ -863,6 +865,7 @@ public class CycleChartView extends HorizontalScrollView
 
    /**
     * Implement this to do your drawing.
+    *
     * @param canvas the canvas on which the background will be drawn.
     */
    @Override
@@ -882,7 +885,7 @@ public class CycleChartView extends HorizontalScrollView
             scrollTo(desiredOffset, 0);
          desiredOffset = -1;
       }
-      
+
       Rect bounds = canvas.getClipBounds();
       canvas.save();
       canvas.translate(bounds.left, 0);
@@ -904,7 +907,7 @@ public class CycleChartView extends HorizontalScrollView
       // Chart title
       paintTitle.setTextAlign(Paint.Align.CENTER);
       String ti = getResources().getString(R.string.chart_title);
-      canvas.drawText(ti, (yFrame.right/2)-paintTitle.getTextScaleX(), yFrame.top * 0.55f , paintTitle);
+      canvas.drawText(ti, (yFrame.right / 2) - paintTitle.getTextScaleX(), yFrame.top * 0.55f, paintTitle);
 
       // Graph
       int graph_width = (int) xFrame.width();
@@ -913,16 +916,16 @@ public class CycleChartView extends HorizontalScrollView
 
       if(graph != null)
       {
-         Bitmap graphClip = Bitmap.createBitmap(graph, (int)offset, 0, (int)xFrame.width(), (int)yFrame.height());
-         canvas.drawBitmap(graphClip, (int)xFrame.left, (int)xFrame.top, null);
+         Bitmap graphClip = Bitmap.createBitmap(graph, (int) offset, 0, (int) xFrame.width(), (int) yFrame.height());
+         canvas.drawBitmap(graphClip, (int) xFrame.left, (int) xFrame.top, null);
       }
       else
       {
          canvas.save();
-         canvas.clipRect((int)xFrame.left, (int)xFrame.top, (int)xFrame.right, (int)yFrame.bottom);
-         canvas.translate((int)xFrame.left - (int)offset, (int)xFrame.top);
+         canvas.clipRect((int) xFrame.left, (int) xFrame.top, (int) xFrame.right, (int) yFrame.bottom);
+         canvas.translate((int) xFrame.left - (int) offset, (int) xFrame.top);
 
-         drawGraph(canvas, graph_width, (int)yFrame.height());
+         drawGraph(canvas, graph_width, (int) yFrame.height());
 
          canvas.restore();
       }
@@ -958,8 +961,7 @@ public class CycleChartView extends HorizontalScrollView
       for(int j = 0; j < yTicks; j++)
       {
          String percent = Integer.toString((yTicks - j - 1) * yStep);
-         canvas.drawText(percent, xFrame.left - paintText.getTextSize() / 2,
-               yFrame.top + (j + 0.5f) * y_step + paintText.getTextSize() / 2, paintText);
+         canvas.drawText(percent, xFrame.left - paintText.getTextSize() / 2, yFrame.top + (j + 0.5f) * y_step + paintText.getTextSize() / 2, paintText);
       }
 
       canvas.restore();

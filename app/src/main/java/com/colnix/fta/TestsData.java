@@ -23,17 +23,30 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.util.Log;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 /**
  * This class manages and exposes the tests information to the rest of the application.
- *
+ * <p>
  * Assumes single thread operation!
  */
 public class TestsData extends SQLiteOpenHelper
 {
+   static final String TAG = "TestsData";
+
    /**
     * Database constants.
     */
@@ -66,11 +79,9 @@ public class TestsData extends SQLiteOpenHelper
    public static final String TESTS_BRAND = "brand";
    public static final String TESTS_NOTE = "note";
 
-   public static final String[] TESTS_COLUMNS = new String[]
-         { TESTS_ID, TESTS_DATE, TESTS_TYPE, TESTS_PIGMENTATION, TESTS_PHOTO, TESTS_BRAND, TESTS_NOTE };
+   public static final String[] TESTS_COLUMNS = new String[]{TESTS_ID, TESTS_DATE, TESTS_TYPE, TESTS_PIGMENTATION, TESTS_PHOTO, TESTS_BRAND, TESTS_NOTE};
 
-   public static final String[] DATA_COLUMNS = new String[]
-         { TESTS_DATE, TESTS_PIGMENTATION };
+   public static final String[] DATA_COLUMNS = new String[]{TESTS_DATE, TESTS_PIGMENTATION};
 
    /**
     * Cycles table and its fields.
@@ -79,12 +90,10 @@ public class TestsData extends SQLiteOpenHelper
    public static final String CYCLES_ID = "_id";
    public static final String CYCLES_START_DATE = "start_date";
 
-   public static final String[] CYCLES_COLUMNS = new String[]
-         { CYCLES_ID, CYCLES_START_DATE};
+   public static final String[] CYCLES_COLUMNS = new String[]{CYCLES_ID, CYCLES_START_DATE};
 
    public static final String COUNT = "count";
-   public static final String[] COUNT_COLUMNS = new String[]
-         { "COUNT(*) as " + COUNT };
+   public static final String[] COUNT_COLUMNS = new String[]{"COUNT(*) as " + COUNT};
 
    /**
     * Test data structure.
@@ -108,7 +117,7 @@ public class TestsData extends SQLiteOpenHelper
             case TYPES_TYPE_PREGNANCY:
                return "pregnancy";
             default:
-               return "unkown";
+               return "unknown";
          }
       }
    }
@@ -131,6 +140,7 @@ public class TestsData extends SQLiteOpenHelper
 
    /**
     * Computes the interpretation text id.
+    *
     * @return Interpretation text id.
     */
    static int interpret(Test test)
@@ -182,25 +192,13 @@ public class TestsData extends SQLiteOpenHelper
       db.execSQL("INSERT INTO " + TYPES_TABLE + "(" + TYPES_TYPE + ") VALUES (" + TYPES_TYPE_OVULATION + ")");
       db.execSQL("INSERT INTO " + TYPES_TABLE + "(" + TYPES_TYPE + ") VALUES (" + TYPES_TYPE_PREGNANCY + ")");
 
-      db.execSQL("CREATE TABLE " + TESTS_TABLE + " (" +
-            TESTS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-            TESTS_DATE + " INTEGER UNIQUE NOT NULL," +
-            TESTS_TYPE + " INTEGER NOT NULL REFERENCES " + TYPES_TABLE + "(" + TYPES_TYPE + ")," +
-            TESTS_PIGMENTATION + " INTEGER," +
-            TESTS_PHOTO  + " TEXT," +
-            TESTS_BRAND  + " TEXT," +
-            TESTS_NOTE + " TEXT)");
+      db.execSQL("CREATE TABLE " + TESTS_TABLE + " (" + TESTS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," + TESTS_DATE + " INTEGER UNIQUE NOT NULL," + TESTS_TYPE + " INTEGER NOT NULL REFERENCES " + TYPES_TABLE + "(" + TYPES_TYPE + ")," + TESTS_PIGMENTATION + " INTEGER," + TESTS_PHOTO + " TEXT," + TESTS_BRAND + " TEXT," + TESTS_NOTE + " TEXT)");
 
       db.execSQL("CREATE INDEX " + TESTS_TABLE + "_" + TESTS_DATE + " ON " + TESTS_TABLE + "(" + TESTS_DATE + ")");
 
-      db.execSQL("CREATE TABLE " + CYCLES_TABLE + " (" +
-            CYCLES_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-            CYCLES_START_DATE + " INTEGER UNIQUE NOT NULL)");
+      db.execSQL("CREATE TABLE " + CYCLES_TABLE + " (" + CYCLES_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," + CYCLES_START_DATE + " INTEGER UNIQUE NOT NULL)");
 
       db.execSQL("CREATE INDEX " + CYCLES_TABLE + "_" + CYCLES_START_DATE + " ON " + CYCLES_TABLE + "(" + CYCLES_START_DATE + ")");
-
-
-      //createDemo(db);
    }
 
    /**
@@ -215,8 +213,7 @@ public class TestsData extends SQLiteOpenHelper
    {
       if(oldVersion == 11 && newVersion == 12)
       {
-         db.execSQL("ALTER TABLE " + TESTS_TABLE + " ADD COLUMN " +
-               TESTS_BRAND  + " TEXT");
+         db.execSQL("ALTER TABLE " + TESTS_TABLE + " ADD COLUMN " + TESTS_BRAND + " TEXT");
 
          return;
       }
@@ -266,45 +263,13 @@ public class TestsData extends SQLiteOpenHelper
 
 
    /**
-    * Creates demo data for testing
-    */
-   void createDemo(SQLiteDatabase db)
-   {
-      for(int i = 0; i < 6; i++)
-      {
-         long date = new GregorianCalendar(2017, i, 1).getTimeInMillis();
-         ContentValues values = new ContentValues();
-         values.put(CYCLES_START_DATE, clearDate(date));
-         db.insert(CYCLES_TABLE, null, values);
-
-         for(int j = 0; j < 8; j++)
-         {
-            values = new ContentValues();
-            values.put(TESTS_DATE, new GregorianCalendar(2017, i, 1 + j * 3).getTimeInMillis());
-            values.put(TESTS_TYPE, TYPES_TYPE_OVULATION);
-            values.put(TESTS_BRAND, (String)null);
-            values.put(TESTS_NOTE, (j % 4 == 0) ? "Interesting note taken here." : null);
-            values.put(TESTS_PIGMENTATION, (int)(150 * Math.random()));
-            values.put(TESTS_PHOTO, (String)null);
-            db.insert(TESTS_TABLE, null, values);
-
-            values.put(TESTS_TYPE, TYPES_TYPE_PREGNANCY);
-            values.put(TESTS_PIGMENTATION, (int)(150 * Math.random()));
-            db.insert(TESTS_TABLE, null, values);
-         }
-      }
-   }
-
-
-   /**
     * Returns a cursor to the list of cycles.
     */
    public Cursor listCycles()
    {
       SQLiteDatabase db = getReadableDatabase();
 
-      return db.query(CYCLES_TABLE, CYCLES_COLUMNS, null, null,
-            null, null, CYCLES_START_DATE + " DESC");
+      return db.query(CYCLES_TABLE, CYCLES_COLUMNS, null, null, null, null, CYCLES_START_DATE + " DESC");
    }
 
    /**
@@ -349,11 +314,13 @@ public class TestsData extends SQLiteOpenHelper
       }
       catch(Exception e)
       {
+         Log.e(TAG, "saveCycle error.", e);
       }
    }
 
    /**
     * Returns the start date of the cycle or -1 if not found.
+    *
     * @param id Cycle id.
     */
    public long loadCycleStart(long id)
@@ -412,6 +379,7 @@ public class TestsData extends SQLiteOpenHelper
 
    /**
     * Checks if the specified cycle is the first one.
+    *
     * @return true if it's the first and false if there is at least on cycle older.
     * On error returns false.
     */
@@ -460,8 +428,7 @@ public class TestsData extends SQLiteOpenHelper
          cycle_end = cursor.getLong(cursor.getColumnIndexOrThrow(TestsData.CYCLES_START_DATE));
 
       // Delete tests in this range
-      db.delete(TESTS_TABLE, TESTS_DATE + " >= " + cycle_start +
-            ((cycle_end > 0)? " AND " + TESTS_DATE + " < " + cycle_end: ""), null);
+      db.delete(TESTS_TABLE, TESTS_DATE + " >= " + cycle_start + ((cycle_end > 0) ? " AND " + TESTS_DATE + " < " + cycle_end : ""), null);
 
       // Delete cycle itself
       db.delete(CYCLES_TABLE, CYCLES_ID + " = " + id, null);
@@ -475,23 +442,19 @@ public class TestsData extends SQLiteOpenHelper
    {
       SQLiteDatabase db = getReadableDatabase();
 
-      return db.query(TESTS_TABLE, TESTS_COLUMNS, TESTS_TYPE + " = " + testType,
-            null, null, null, TESTS_DATE + " DESC");
+      return db.query(TESTS_TABLE, TESTS_COLUMNS, TESTS_TYPE + " = " + testType, null, null, null, TESTS_DATE + " DESC");
    }
 
    /**
     * Returns a cursor with the list of tests of the current type which belong to one cycle.
+    *
     * @param end date or <= 0 for unset
     */
    public Cursor listData(long start, long end)
    {
       SQLiteDatabase db = getReadableDatabase();
 
-      return db.query(TESTS_TABLE, DATA_COLUMNS,
-            TESTS_TYPE + " = " + testType + " AND "
-               + TESTS_DATE + " >= " + start +
-               ((end <= 0)? "" : " AND " + TESTS_DATE + " < " + end),
-            null, null, null, TESTS_DATE + " ASC");
+      return db.query(TESTS_TABLE, DATA_COLUMNS, TESTS_TYPE + " = " + testType + " AND " + TESTS_DATE + " >= " + start + ((end <= 0) ? "" : " AND " + TESTS_DATE + " < " + end), null, null, null, TESTS_DATE + " ASC");
    }
 
    /**
@@ -527,8 +490,7 @@ public class TestsData extends SQLiteOpenHelper
          cycle_end = cursor.getLong(cursor.getColumnIndexOrThrow(TestsData.CYCLES_START_DATE));
 
       // Count tests in cycle
-      cursor = db.query(TESTS_TABLE, COUNT_COLUMNS, TESTS_DATE + " >= " + cycle_start +
-            ((cycle_end <= 0)? "" : " AND " + TESTS_DATE + " < " + cycle_end), null, null, null, null);
+      cursor = db.query(TESTS_TABLE, COUNT_COLUMNS, TESTS_DATE + " >= " + cycle_start + ((cycle_end <= 0) ? "" : " AND " + TESTS_DATE + " < " + cycle_end), null, null, null, null);
       cursor.moveToFirst();
       return cursor.getInt(cursor.getColumnIndexOrThrow(TestsData.COUNT));
    }
@@ -540,8 +502,7 @@ public class TestsData extends SQLiteOpenHelper
    {
       SQLiteDatabase db = getReadableDatabase();
 
-      Cursor cursor = db.query(TESTS_TABLE, new String[] { TESTS_DATE }, null, null, null, null,
-            TESTS_DATE + " ASC", "1");
+      Cursor cursor = db.query(TESTS_TABLE, new String[]{TESTS_DATE}, null, null, null, null, TESTS_DATE + " ASC", "1");
       if(!cursor.moveToFirst())
          return -1;
 
@@ -596,7 +557,7 @@ public class TestsData extends SQLiteOpenHelper
       // Get cycle start (and id)
       cursor = db.query(CYCLES_TABLE, CYCLES_COLUMNS, CYCLES_START_DATE + " <= " + test_date, null, null, null, CYCLES_START_DATE + " DESC", "1");
       cursor.moveToFirst();
-      long cycle_id =  cursor.getLong(cursor.getColumnIndexOrThrow(TestsData.CYCLES_ID));
+      long cycle_id = cursor.getLong(cursor.getColumnIndexOrThrow(TestsData.CYCLES_ID));
       long cycle_start = cursor.getLong(cursor.getColumnIndexOrThrow(TestsData.CYCLES_START_DATE));
 
       // Get load end if not last
@@ -609,8 +570,7 @@ public class TestsData extends SQLiteOpenHelper
       db.delete(TESTS_TABLE, TESTS_ID + " = " + id, null);
 
       // Count remaining tests in cycle
-      cursor = db.query(TESTS_TABLE, COUNT_COLUMNS, TESTS_DATE + " >= " + cycle_start +
-            ((cycle_end <= 0)? "" : " AND " + TESTS_DATE + " < " + cycle_end), null, null, null, null);
+      cursor = db.query(TESTS_TABLE, COUNT_COLUMNS, TESTS_DATE + " >= " + cycle_start + ((cycle_end <= 0) ? "" : " AND " + TESTS_DATE + " < " + cycle_end), null, null, null, null);
       cursor.moveToFirst();
       if(cursor.getInt(cursor.getColumnIndexOrThrow(TestsData.COUNT)) == 0)
       {
@@ -622,6 +582,7 @@ public class TestsData extends SQLiteOpenHelper
    /**
     * Stores a test into the database.
     * If the test does not exist (the id is less than 0), it creates a new entry and fills the id.
+    *
     * @return true if created and false if updated.
     */
    public boolean saveTest(Test test)
@@ -646,5 +607,263 @@ public class TestsData extends SQLiteOpenHelper
          db.update(TESTS_TABLE, values, TESTS_ID + " = " + test.id, null);
          return false;
       }
+   }
+
+   /**
+    * Formats a string to be exported as CSV
+    */
+   String exportString(String str)
+   {
+      if(str == null)
+         return "";
+
+      if(str.indexOf(',') < 0 && str.indexOf('"') < 0)
+         return str;
+
+      return "\"" + str.replace("\"", "\"\"") + "\"";
+   }
+
+   /**
+    * Formats a the photo path to be exported as CSV
+    */
+   String exportPhoto(String str)
+   {
+      if(str == null)
+         return "";
+
+      int i = str.lastIndexOf('/');
+      if(i >= 0)
+         str = str.substring(i + 1);
+      return exportString(str);
+   }
+
+   /**
+    * Breaks a CSV line into (unescaped) fields.
+    */
+   String[] importFields(String line)
+   {
+      if(line == null || line.length() == 0)
+         return null;
+
+      List<String> fields = new ArrayList<>();
+      StringBuffer sb = new StringBuffer();
+      boolean field_start = true;
+      boolean escaping = false;
+      boolean prev_quote = false;
+      for(int i = 0; i < line.length(); i++)
+      {
+         char c = line.charAt(i);
+
+         if(field_start)
+         {
+            field_start = false;
+
+            if(c == ',')
+            {
+               fields.add(sb.toString());
+               sb.setLength(0);
+               field_start = true;
+               escaping = false;
+            }
+            else if(c == '"')
+            {
+               escaping = true;
+               prev_quote = false;
+            }
+            else
+            {
+               sb.append(c);
+            }
+         }
+         else if(escaping)
+         {
+            if(prev_quote)
+            {
+               prev_quote = false;
+
+               if(c == '"')
+               {
+                  // Double quote
+                  sb.append('"');
+               }
+               else if(c == ',')
+               {
+                  fields.add(sb.toString());
+                  sb.setLength(0);
+                  field_start = true;
+                  escaping = false;
+               }
+               else
+               {
+                  // Relaxed input
+                  sb.append('"');
+                  sb.append(c);
+               }
+            }
+            else
+            {
+               if(c == '"')
+               {
+                  prev_quote = true;
+               }
+               else
+               {
+                  sb.append(c);
+               }
+            }
+         }
+         else
+         {
+            if(c == ',')
+            {
+               fields.add(sb.toString());
+               sb.setLength(0);
+               field_start = true;
+               escaping = false;
+            }
+            else
+            {
+               sb.append(c);
+            }
+         }
+      }
+      // An escaped field not finished is accepted anyway (relaxed input)
+      fields.add(sb.toString());
+
+      String[] raw_fields = new String[fields.size()];
+      for(int i = 0; i < fields.size(); i++)
+         raw_fields[i] = fields.get(i);
+      return raw_fields;
+   }
+
+   /**
+    * Exports all the data to a CSV file.
+    *
+    * @return true on success
+    */
+   public boolean exportData(File csv_file)
+   {
+      SQLiteDatabase db = getReadableDatabase();
+
+      try(PrintWriter csv = new PrintWriter(new FileWriter(csv_file)))
+      {
+         // Tests
+         try(Cursor cursor = db.query(TESTS_TABLE, TESTS_COLUMNS, null, null, null, null, TESTS_DATE + " DESC"))
+         {
+            csv.println(TESTS_DATE + "," + TESTS_TYPE + "," + TESTS_PIGMENTATION + "," + TESTS_PHOTO + "," + TESTS_BRAND + "," + TESTS_NOTE);
+
+            while(cursor.moveToNext())
+            {
+               csv.println(cursor.getLong(cursor.getColumnIndexOrThrow(TESTS_DATE)) + "," + cursor.getInt(cursor.getColumnIndexOrThrow(TESTS_TYPE)) + "," + cursor.getInt(cursor.getColumnIndexOrThrow(TESTS_PIGMENTATION)) + "," + exportPhoto(cursor.getString(cursor.getColumnIndexOrThrow(TESTS_PHOTO))) + "," + exportString(cursor.getString(cursor.getColumnIndexOrThrow(TESTS_BRAND))) + "," + exportString(cursor.getString(cursor.getColumnIndexOrThrow(TESTS_NOTE))));
+            }
+         }
+
+         csv.println();
+
+         // Cycles
+         try(Cursor cursor = db.query(CYCLES_TABLE, CYCLES_COLUMNS, null, null, null, null, CYCLES_START_DATE + " DESC"))
+         {
+            csv.println(CYCLES_START_DATE);
+
+            while(cursor.moveToNext())
+            {
+               csv.println(cursor.getLong(cursor.getColumnIndexOrThrow(CYCLES_START_DATE)));
+            }
+         }
+      }
+      catch(IOException e)
+      {
+         Log.d(TAG, "Data exportation error.", e);
+         return false;
+      }
+      return true;
+   }
+
+   /**
+    * Imports all the data from a CSV file.
+    *
+    * @return true on success
+    */
+   public boolean importData(File media_dir, File csv_file)
+   {
+      //Log.d(TAG, "importData: " + csv_file.toString());
+
+      SQLiteDatabase db = getWritableDatabase();
+
+      try(BufferedReader csv = new BufferedReader(new FileReader(csv_file)))
+      {
+         String line = csv.readLine();
+         if(line == null)
+            throw new Exception("Unexpected end of file.");
+         if(!line.equals(TESTS_DATE + "," + TESTS_TYPE + "," + TESTS_PIGMENTATION + "," + TESTS_PHOTO + "," + TESTS_BRAND + "," + TESTS_NOTE))
+            throw new Exception("Invalid data header.");
+
+         // Delete previous data
+         db.delete(TESTS_TABLE, null, null);
+         db.delete(CYCLES_TABLE, null, null);
+
+         while(true)
+         {
+            line = csv.readLine();
+            if(line == null)
+               throw new Exception("Unexpected end of file.");
+            if(line.length() == 0)
+               break;
+
+            String[] fields = importFields(line);
+            if(fields == null || fields.length != 6)
+               throw new Exception("Row processing error.");
+
+            long date = Long.parseLong(fields[0]);
+            int type = Integer.parseInt(fields[1]);
+            int pigmentation = Integer.parseInt(fields[2]);
+            String photo = fields[3];
+            if(photo.length() == 0)
+               photo = null;
+            else
+               photo = media_dir.toString() + "/" + photo;
+            String brand = fields[4];
+            if(brand.length() == 0)
+               brand = null;
+            String note = fields[5];
+            if(note.length() == 0)
+               note = null;
+
+            ContentValues values = new ContentValues();
+            values.put(TESTS_DATE, date);
+            values.put(TESTS_TYPE, type);
+            values.put(TESTS_PIGMENTATION, pigmentation);
+            values.put(TESTS_PHOTO, photo);
+            values.put(TESTS_BRAND, brand);
+            values.put(TESTS_NOTE, note);
+            db.insert(TESTS_TABLE, null, values);
+         }
+
+         line = csv.readLine();
+         if(line == null)
+            throw new Exception("Unexpected end of file.");
+         if(!line.equals(CYCLES_START_DATE))
+            throw new Exception("Invalid data second header.");
+
+         while(true)
+         {
+            line = csv.readLine();
+            if(line == null)
+               break;
+
+            long start_date = Long.parseLong(line);
+
+            ContentValues values = new ContentValues();
+            values.put(CYCLES_START_DATE, clearDate(start_date));
+            db.insert(CYCLES_TABLE, null, values);
+         }
+      }
+      catch(Exception e)
+      {
+         Log.d(TAG, "Data importation error.", e);
+         return false;
+      }
+
+      return true;
    }
 }

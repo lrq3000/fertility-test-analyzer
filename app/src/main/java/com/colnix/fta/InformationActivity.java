@@ -38,4 +38,10 @@ public class InformationActivity extends NavigationActivity
 
       init();
    }
+
+   @Override
+   protected void onDestroy()
+   {
+      super.onDestroy();
+   }
 }

@@ -29,6 +29,7 @@ import android.graphics.Rect;
 import android.graphics.YuvImage;
 import android.hardware.Camera;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -40,16 +41,18 @@ import java.util.List;
 
 /**
  * Camera preview widget which can take frames for processing or saving.
- *
+ * <p>
  * Uses the android.hardware.Camera class deprecated since API 21 to interface with the camera.
  */
 @SuppressWarnings("deprecation")
 public class CameraView extends SurfaceView implements SurfaceHolder.Callback, Camera.PreviewCallback
 {
+   static final String TAG = "CameraView";
+
    /**
     * Frame rate in milliseconds.
     */
-   static final int FRAME_RATE = 500;
+   static final int FRAME_RATE_MS = 500;
 
    /**
     * Zoom upper limit to keep it usable.
@@ -143,10 +146,13 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
     */
    protected void setupCamera(int width, int height)
    {
+      float viewRatio = width / (float) height;
+      Log.d(TAG, "setupCamera: " + width + "x" + height + " (" + viewRatio + ")");
+
       Camera.Parameters params = camera.getParameters();
 
       // Resolution
-      float viewRatio = width / (float) height;
+
       if(viewRatio < 1.0f)
       {
          viewRatio = 1 / viewRatio;
@@ -159,6 +165,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
       for(Camera.Size size : params.getSupportedPreviewSizes())
       {
          float ratio = size.width / (float) size.height;
+         //Log.d(TAG, "   Detected camera size: " + size.width + "x" + size.height + " (" + ratio + ")");
 
          if(width == size.width && height == size.height)
          {
@@ -172,6 +179,10 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
             // First available
             bestRatio = ratio;
             bestSize = size;
+         }
+         else if(size.width < width || size.height < height)
+         {
+            // Ignore small resolutions
          }
          else if(ratio == bestRatio)
          {
@@ -213,7 +224,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
       if(bestSize == null)
          throw new RuntimeException("No valid preview size found.");
 
-      //Log.w(TAG, "Selected size: " + bestSize.width + "x" + bestSize.height + " (" + bestRatio + ")");
+      Log.i(TAG, "Selected camera image size: " + bestSize.width + "x" + bestSize.height + " (" + bestRatio + ")");
       params.setPreviewSize(bestSize.width, bestSize.height);
 
 
@@ -364,6 +375,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
     * This is called immediately after the surface is first created.
     * Implementations of this should start up whatever rendering code
     * they desire.
+    *
     * @param holder The SurfaceHolder whose surface is being created.
     */
    @Override
@@ -378,9 +390,10 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
     * size) have been made to the surface. You should at this point update
     * the imagery in the surface. This method is always called at least
     * once, after {@link #surfaceCreated}.
+    *
     * @param holder The SurfaceHolder whose surface has changed.
     * @param format The new PixelFormat of the surface.
-    * @param width The new width of the surface.
+    * @param width  The new width of the surface.
     * @param height The new height of the surface.
     */
    @Override
@@ -412,7 +425,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
       {
          closeCamera();
 
-         //Log.e("CameraView", "Error creating the camera.", e);
+         Log.e(TAG, "Error creating the camera.", e);
 
          Toast.makeText(getContext(), R.string.camera_access_error, Toast.LENGTH_LONG).show();
       }
@@ -422,6 +435,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
     * This is called immediately before a surface is being destroyed. After
     * returning from this call, you should no longer try to access this
     * surface.
+    *
     * @param holder The SurfaceHolder whose surface is being destroyed.
     */
    @Override
@@ -445,6 +459,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
 
    /**
     * Checks for torch support.
+    *
     * @return true if supported.
     */
    boolean supportsTorch()
@@ -485,8 +500,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
                camera.setParameters(params);
 
                SharedPreferences prefs = Config.getPrefs(getContext());
-               if(modes.contains(Camera.Parameters.FLASH_MODE_AUTO) &&
-                     prefs.getBoolean(Config.PREF_FLASH_ON_FOCUS, true))
+               if(modes.contains(Camera.Parameters.FLASH_MODE_AUTO) && prefs.getBoolean(Config.PREF_FLASH_ON_FOCUS, true))
                {
                   params.setFlashMode(Camera.Parameters.FLASH_MODE_AUTO);
                   camera.setParameters(params);
@@ -495,6 +509,8 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
          }
          catch(Exception e)
          {
+            Log.e(TAG, "Error setting the torch.", e);
+
             Toast.makeText(getContext(), R.string.camera_access_error, Toast.LENGTH_LONG).show();
          }
       }
@@ -539,6 +555,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
       }
       catch(Exception e)
       {
+         Log.e(TAG, "Error setting the zoom.", e);
       }
    }
 
@@ -565,8 +582,8 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
 
       int w = getWidth();
       int h = getHeight();
-      int x = (int)event.getX() - AUTOFOCUS_SIZE / 2;
-      int y = (int)event.getY() - AUTOFOCUS_SIZE / 2;
+      int x = (int) event.getX() - AUTOFOCUS_SIZE / 2;
+      int y = (int) event.getY() - AUTOFOCUS_SIZE / 2;
       if(x < 0)
       {
          x = 0;
@@ -586,10 +603,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
       Rect touch = new Rect(x, y, x + AUTOFOCUS_SIZE, y + AUTOFOCUS_SIZE);
 
       int weight = 1000;
-      Rect focus_area = new Rect((touch.left * 2 * weight) / w - weight,
-            (touch.top * 2 * weight) / h - weight,
-            (touch.right * 2 * weight) / w - weight,
-            (touch.bottom * 2 * weight) / h - weight);
+      Rect focus_area = new Rect((touch.left * 2 * weight) / w - weight, (touch.top * 2 * weight) / h - weight, (touch.right * 2 * weight) / w - weight, (touch.bottom * 2 * weight) / h - weight);
 
       List<Camera.Area> focusList = new ArrayList<>();
       focusList.add(new Camera.Area(focus_area, weight));
@@ -671,21 +685,23 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
     * refer to the equations in {@link Camera.Parameters#setPreviewFormat}
     * for the arrangement of the pixel data in the preview callback
     * buffers.
-    * @param data the contents of the preview frame in the format defined
-    * by {@link ImageFormat}, which can be queried
-    * with {@link Camera.Parameters#getPreviewFormat()}.
-    * If {@link Camera.Parameters#setPreviewFormat(int)}
-    * is never called, the default will be the YCbCr_420_SP
-    * (NV21) format.
+    *
+    * @param data   the contents of the preview frame in the format defined
+    *               by {@link ImageFormat}, which can be queried
+    *               with {@link Camera.Parameters#getPreviewFormat()}.
+    *               If {@link Camera.Parameters#setPreviewFormat(int)}
+    *               is never called, the default will be the YCbCr_420_SP
+    *               (NV21) format.
     * @param camera the Camera service object.
-    */ @Override
+    */
+   @Override
    public void onPreviewFrame(byte[] data, Camera camera)
    {
       if(activity == null)
          return;
 
       long now = System.currentTimeMillis();
-      if(!takePicture && lastFrame != 0 && now < lastFrame + FRAME_RATE)
+      if(!takePicture && lastFrame != 0 && now < lastFrame + FRAME_RATE_MS)
          return;
       lastFrame = now;
 

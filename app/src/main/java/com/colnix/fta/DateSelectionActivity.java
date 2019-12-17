@@ -100,17 +100,16 @@ public class DateSelectionActivity extends AppCompatActivity
       }
 
       // If rotating the state value is loaded after onCreate.
-      date_picker.init(date.get(GregorianCalendar.YEAR), date.get(GregorianCalendar.MONTH),
-            date.get(GregorianCalendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener()
-            {
-               @Override
-               public void onDateChanged(DatePicker datePicker, int i, int i1, int i2)
-               {
-                  // It fires with the set of the year, but the user may want to select the month
-                  // and day.
-                  //acceptDate();
-               }
-            });
+      date_picker.init(date.get(GregorianCalendar.YEAR), date.get(GregorianCalendar.MONTH), date.get(GregorianCalendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener()
+      {
+         @Override
+         public void onDateChanged(DatePicker datePicker, int i, int i1, int i2)
+         {
+            // It fires with the set of the year, but the user may want to select the month
+            // and day.
+            //acceptDate();
+         }
+      });
 
       Button btn = (Button) findViewById(R.id.date_cancel);
       btn.setOnClickListener(new View.OnClickListener()
@@ -207,8 +206,7 @@ public class DateSelectionActivity extends AppCompatActivity
       DatePicker date_picker = (DatePicker) findViewById(R.id.date_picker);
       TimePicker time_picker = (TimePicker) findViewById(R.id.time_picker);
 
-      calendar.set(date_picker.getYear(), date_picker.getMonth(), date_picker.getDayOfMonth(),
-            time_picker.getCurrentHour(), time_picker.getCurrentMinute());
+      calendar.set(date_picker.getYear(), date_picker.getMonth(), date_picker.getDayOfMonth(), time_picker.getCurrentHour(), time_picker.getCurrentMinute());
 
       long date = calendar.getTimeInMillis();
       if(date < minDate)

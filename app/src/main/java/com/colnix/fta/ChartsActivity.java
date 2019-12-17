@@ -87,7 +87,7 @@ public class ChartsActivity extends NavigationActivity
 
       ListView list = (ListView) findViewById(R.id.list_my_cycles);
       //list.setHeaderDividersEnabled(false);
-      
+
       chart = (CycleChartView) findViewById(R.id.chart_cycle);
       if(chart == null)
       {
@@ -105,6 +105,12 @@ public class ChartsActivity extends NavigationActivity
 
       needsRefresh = true;
       init();
+   }
+
+   @Override
+   protected void onDestroy()
+   {
+      super.onDestroy();
    }
 
    /**
@@ -137,7 +143,8 @@ public class ChartsActivity extends NavigationActivity
       buttonTypeOvul = (RadioButton) findViewById(R.id.btn_type_ovulation);
       buttonTypePreg = (RadioButton) findViewById(R.id.btn_type_pregnancy);
 
-      buttonTypeOvul.setOnClickListener(new View.OnClickListener() {
+      buttonTypeOvul.setOnClickListener(new View.OnClickListener()
+      {
          @Override
          public void onClick(View v)
          {
@@ -157,7 +164,8 @@ public class ChartsActivity extends NavigationActivity
          }
       });
 
-      buttonTypePreg.setOnClickListener(new View.OnClickListener() {
+      buttonTypePreg.setOnClickListener(new View.OnClickListener()
+      {
          @Override
          public void onClick(View v)
          {
@@ -308,6 +316,7 @@ public class ChartsActivity extends NavigationActivity
 
    /**
     * Loads a cycle and adds it to the chart.
+    *
     * @param end final date or -1 if last cycle.
     */
    protected void addCycle(long id, long start, long end)
@@ -336,6 +345,7 @@ public class ChartsActivity extends NavigationActivity
 
    /**
     * Cycle selected event handler.
+    *
     * @param end final date or -1 if last cycle.
     */
    public void onCycleSelected(long id, long start, long end)

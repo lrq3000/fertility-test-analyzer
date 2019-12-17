@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -235,10 +236,18 @@ public class TestEditionActivity extends ServicesActivity
          public void onClick(View view)
          {
             Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(Uri.fromFile(new File(test.photo)), "image/*");
+            Uri uri = FileProvider.getUriForFile(TestEditionActivity.this, getApplicationContext().getPackageName() + ".provider", new File(test.photo));
+            intent.setDataAndType(uri, "image/*");
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivity(intent);
          }
       });
+   }
+
+   @Override
+   protected void onDestroy()
+   {
+      super.onDestroy();
    }
 
    /**
@@ -370,6 +379,7 @@ public class TestEditionActivity extends ServicesActivity
 
    /**
     * Sets the interpretation text.
+    *
     * @param text Interpretation id or 0 to hide the message.
     */
    void setInterpret(int text)

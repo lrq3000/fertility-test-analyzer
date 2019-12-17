@@ -92,6 +92,75 @@
                     android:text="@string/pref_saving_expl"
                     android:textColor="@color/colorSecondaryText" />
 
+                <TextView
+                    style="@style/FtaTitleLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="16dp"
+                    android:text="@string/pref_export_import"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/sizeTextTitle" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_export"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minHeight="40dp"
+                        android:text="@string/pref_export"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/colorAccent"
+                        style="@style/FtaButtonColorless" />
+
+                    <Button
+                        android:id="@+id/btn_import"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minHeight="40dp"
+                        android:text="@string/pref_import"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/colorAccent"
+                        style="@style/FtaButtonColorless" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/pref_import_expl"
+                    android:textColor="@color/colorSecondaryText" />
+
+                <TextView
+                    android:id="@+id/text_photo_dir"
+                    style="@style/FtaTitleLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="16dp"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/sizeTextTitle" />
+
                 <!-- Usability -->
                 <TextView
                     style="@style/FtaTitleLayout"
@@ -123,7 +192,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                                        android:layout_marginEnd="11dp"
+                    android:layout_marginEnd="11dp"
                     android:layout_marginLeft="60dp"
                     android:layout_marginRight="11dp"
                     android:layout_marginStart="60dp"
@@ -184,6 +253,26 @@
                     android:layout_marginStart="60dp"
                     android:text="@string/pref_camera_expl"
                     android:textColor="@color/colorSecondaryText" />
+
+                <TextView
+                    style="@style/FtaTitleLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="16dp"
+                    android:text="@string/pref_date_format"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/sizeTextTitle" />
+
+                <Spinner
+                    android:id="@+id/spinner_date_format"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="11dp"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginStart="11dp"
+                    android:spinnerMode="dropdown" />
 
                 <!-- Information -->
                 <TextView
@@ -270,6 +359,33 @@
                     android:paddingTop="16dp"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/sizeTextTitle" />
+
+                <CheckBox
+                    android:id="@+id/check_dev_mode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="11dp"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginStart="11dp"
+                    android:checked="true"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:paddingStart="15dp"
+                    android:paddingTop="6dp"
+                    android:text="@string/pref_dev_mode"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/sizeTextTitle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="11dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginStart="60dp"
+                    android:text="@string/pref_dev_mode_expl"
+                    android:textColor="@color/colorSecondaryText" />
 
                 <TextView
                     android:id="@+id/text_clear_title"

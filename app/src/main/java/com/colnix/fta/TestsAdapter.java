@@ -214,7 +214,7 @@ public class TestsAdapter extends BaseAdapter
       list = new ArrayList<>();
       selected = -1;
       inflater = LayoutInflater.from(activity);
-      dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
+      dateFormatter = new SimpleDateFormat(Config.getDateFormat(activity));
       timeFormatter = new SimpleDateFormat("HH:mm");
       reviewMode = false;
    }
@@ -294,6 +294,7 @@ public class TestsAdapter extends BaseAdapter
 
    /**
     * How many items are in the data set represented by this Adapter.
+    *
     * @return Count of items.
     */
    @Override
@@ -318,10 +319,11 @@ public class TestsAdapter extends BaseAdapter
 
    /**
     * Get the type of View that will be created by getView(int, View, ViewGroup) for the specified item.
+    *
     * @param position
     * @return An integer representing the type of View. Two views should share the same type if one
-    *    can be converted to the other in getView(int, View, ViewGroup). Note: Integers must be in
-    *    the range 0 to getViewTypeCount() - 1.
+    * can be converted to the other in getView(int, View, ViewGroup). Note: Integers must be in
+    * the range 0 to getViewTypeCount() - 1.
     */
    @Override
    public int getItemViewType(int position)
@@ -331,8 +333,9 @@ public class TestsAdapter extends BaseAdapter
 
    /**
     * Get the data item associated with the specified position in the data set.
+    *
     * @param position Position of the item whose data we want within the adapter's
-    * data set.
+    *                 data set.
     * @return The data at the specified position.
     */
    @Override
@@ -358,6 +361,7 @@ public class TestsAdapter extends BaseAdapter
 
    /**
     * Get the row id associated with the specified position in the list.
+    *
     * @param position The position of the item within the adapter's data set whose row id we want.
     * @return The id of the item at the specified position.
     */
@@ -397,6 +401,7 @@ public class TestsAdapter extends BaseAdapter
 
    /**
     * Sets the first test element selected.
+    *
     * @return the test id or -1 if none.
     */
    public void setSelectedFirst()
@@ -443,7 +448,8 @@ public class TestsAdapter extends BaseAdapter
       holder.note = (TextView) view.findViewById(R.id.test_note);
       view.setTag(holder);
 
-      view.setOnClickListener(new View.OnClickListener() {
+      view.setOnClickListener(new View.OnClickListener()
+      {
          @Override
          public void onClick(View v)
          {
@@ -452,7 +458,8 @@ public class TestsAdapter extends BaseAdapter
       });
 
       ImageButton btn = (ImageButton) view.findViewById(R.id.btn_remove);
-      btn.setOnClickListener(new View.OnClickListener() {
+      btn.setOnClickListener(new View.OnClickListener()
+      {
          @Override
          public void onClick(View v)
          {
@@ -460,7 +467,8 @@ public class TestsAdapter extends BaseAdapter
          }
       });
 
-      holder.noteButton.setOnClickListener(new View.OnClickListener() {
+      holder.noteButton.setOnClickListener(new View.OnClickListener()
+      {
          @Override
          public void onClick(View v)
          {
@@ -541,7 +549,8 @@ public class TestsAdapter extends BaseAdapter
       holder.duration = (TextView) view.findViewById(R.id.cycle_duration);
       view.setTag(holder);
 
-      view.setOnClickListener(new View.OnClickListener() {
+      view.setOnClickListener(new View.OnClickListener()
+      {
          @Override
          public void onClick(View v)
          {
@@ -550,7 +559,8 @@ public class TestsAdapter extends BaseAdapter
       });
 
       ImageButton btn = (ImageButton) view.findViewById(R.id.btn_cycle_see);
-      btn.setOnClickListener(new View.OnClickListener() {
+      btn.setOnClickListener(new View.OnClickListener()
+      {
          @Override
          public void onClick(View v)
          {
@@ -592,15 +602,16 @@ public class TestsAdapter extends BaseAdapter
     * parent View (GridView, ListView...) will apply default layout parameters unless you use
     * {@link LayoutInflater#inflate(int, ViewGroup, boolean)}
     * to specify a root view and to prevent attachment to the root.
-    * @param position The position of the item within the adapter's data set of the item whose view
-    * we want.
+    *
+    * @param position    The position of the item within the adapter's data set of the item whose view
+    *                    we want.
     * @param convertView The old view to reuse, if possible. Note: You should check that this view
-    * is non-null and of an appropriate type before using. If it is not possible to convert
-    * this view to display the correct data, this method can create a new view.
-    * Heterogeneous lists can specify their number of view types, so that this View is
-    * always of the right type (see {@link #getViewTypeCount()} and
-    * {@link #getItemViewType(int)}).
-    * @param parent The parent that this view will eventually be attached to
+    *                    is non-null and of an appropriate type before using. If it is not possible to convert
+    *                    this view to display the correct data, this method can create a new view.
+    *                    Heterogeneous lists can specify their number of view types, so that this View is
+    *                    always of the right type (see {@link #getViewTypeCount()} and
+    *                    {@link #getItemViewType(int)}).
+    * @param parent      The parent that this view will eventually be attached to
     * @return A View corresponding to the data at the specified position.
     */
    @Override

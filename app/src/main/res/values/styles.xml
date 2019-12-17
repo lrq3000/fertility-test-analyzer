@@ -44,8 +44,12 @@
     </style>
 
     <style name="FtaAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <!-- Used for the buttons -->
-        <item name="colorAccent">#FF4970</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorAccent</item>
+    </style>
+
+    <style name="FtaSpinnerDropDownStyle" parent="Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:textColor">@color/colorSecondaryText</item>
     </style>
 
     <style name="FtaTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

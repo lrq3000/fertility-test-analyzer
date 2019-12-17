@@ -131,6 +131,35 @@
     <string name="pref_storage">Storage</string>
     <string name="pref_saving_pict">Enable saving test pictures</string>
     <string name="pref_saving_expl">Associated test data is saved anyway</string>
+    <string name="pref_export_import">Export/Import data</string>
+    <string name="pref_export">Export</string>
+    <string name="pref_import">Import</string>
+    <string name="pref_import_expl">If you want to export/import your photos, remember to copy them from the pictures folder shown below.</string>
+    <string name="pref_open_dir">Open directory</string>
+    <string name="pref_permision_denied">Permission denied, your data could not be exported.</string>
+    <string name="pref_permision_needed">Permission Needed</string>
+    <string name="pref_permision_expl">You have to grant write access to your SD card if you want to export your data to a file.</string>
+    <string name="pref_export_error">Error exporting the data.</string>
+    <string name="pref_send_file">Send file.</string>
+    <string name="pref_import_confirm_title">Your data will be lost!</string>
+    <string name="pref_import_confirm_message">You have data in the app that will be lost if you continue the importation.
+        \nDo you really want to continue?</string>
+    <string name="pref_continue">Continue</string>
+    <string name="pref_select_csv">Select a file to import</string>
+    <string name="pref_import_error">Error importing the data.</string>
+    <string name="pref_import_ok">Data imported successfully.</string>
+
+    <string name="pref_usability">Usability</string>
+    <string name="pref_torch">Enable using flash during autofocus when it is dark </string>
+    <string name="pref_torch_expl">Flash helps the camera with focus, but it will not be forced to be on
+      during image acquisition</string>
+    <string name="pref_notes">Enable visibility of test notes</string>
+    <string name="pref_notes_expl">If you want test notes to be always visible in My Cycles tests list</string>
+    <string name="pref_camera">Show again the camera tips</string>
+    <string name="pref_camera_expl">If you want the information to be visible the next time you take a picture</string>
+    <string name="pref_date_format">Date format</string>
+    <string name="pref_date_format_dd_mm_yyyy">dd/mm/yyyy</string>
+    <string name="pref_date_format_mm_dd_yyyy">mm/dd/yyyy</string>
 
     <string name="pref_information">Information</string>
     <string name="pref_ovulation_brand">Default ovulation test brand</string>
@@ -139,19 +168,11 @@
     <string name="pref_display_preg_brand">Write the brand here</string>
 
     <string name="pref_version">Version</string>
+    <string name="pref_dev_mode">Developer mode</string>
+    <string name="pref_dev_mode_expl">Enable advanced options for developers.</string>
     <string name="pref_clear_title">Reset settings</string>
     <string name="pref_clear">Click here to clear all the preferences.</string>
     <string name="pref_reset">All preferences reset.</string>
-
-    <string name="pref_usability">Usability</string>
-
-    <string name="pref_torch">Enable using flash during autofocus when it is dark </string>
-    <string name="pref_torch_expl">Flash helps the camera with focus, but it will not be forced to be on
-      during image acquisition</string>
-    <string name="pref_notes">Enable visibility of test notes</string>
-    <string name="pref_notes_expl">If you want test notes to be always visible in My Cycles tests list</string>
-    <string name="pref_camera">Show again the camera tips</string>
-    <string name="pref_camera_expl">If you want the information to be visible the next time you take a picture</string>
 
     <!-- Information Activity -->
     <string name="info_title_teststrips">Test Strips</string>
@@ -336,9 +357,10 @@
 
     <!-- New Test Activity -->
     <string name="ntest_camera_perm">Camera access required to capture new tests.</string>
+    <string name="ntest_select_image">Select an image</string>
 
     <!-- Test Edition Activity -->
-    <string name="ted_expl1">Sorry, this date matches the date of another existing cycle.</string>
+    <string name="ted_expl1">Sorry, this date matches the date of another existing cycle. You can edit cycles in My Cycles.</string>
     <string name="ted_expl2">You cannot create a cycle in a date that matches the date of another existing cycle.\n</string>
     <string name="ted_expl3">The cycle must begin before or on the date of this test.</string>
 

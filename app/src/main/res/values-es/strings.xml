@@ -125,6 +125,34 @@
     <string name="pref_storage">Almacenamiento</string>
     <string name="pref_saving_pict">Guardar imágenes</string>
     <string name="pref_saving_expl">Los datos asociados al test se guardan de todas formas</string>
+    <string name="pref_export_import">Exportar/Importar datos</string>
+    <string name="pref_export">Exportar</string>
+    <string name="pref_import">Importar</string>
+    <string name="pref_import_expl">Si quieres exportar/importar las fotos, recuerda copiar las de la carpeta de imágenes indicada abajo.</string>
+    <string name="pref_open_dir">Abrir carpeta</string>
+    <string name="pref_permision_denied">Permiso denegado, tus datos no se han podido exportar.</string>
+    <string name="pref_permision_needed">Se necesitan permisos</string>
+    <string name="pref_permision_expl">Si quieres exportar tus datos a un archivo, debes dar permiso de escritura en tu tarjeta SD.</string>
+    <string name="pref_export_error">El proceso de exportación a fallado.</string>
+    <string name="pref_send_file">Enviar archivo.</string>
+    <string name="pref_import_confirm_title">¡Tus datos se perderán!</string>
+    <string name="pref_import_confirm_message">Tienes datos en la app que se perderán si continuas el proceso de importacion.
+        \nEstas seguro de que quieres continuar?</string>
+    <string name="pref_continue">Continuar</string>
+    <string name="pref_select_csv">Selecciona el archivo a importar</string>
+    <string name="pref_import_error">El proceso de importación a fallado.</string>
+    <string name="pref_import_ok">Datos importados correctamente.</string>
+
+    <string name="pref_usability">Usabilidad</string>
+    <string name="pref_torch">Usar el flash cuando se necesite para el autoenfocado</string>
+    <string name="pref_torch_expl">El flash ayuda a que la cámara enfoque mejor si detecta falta de luz, pero no se mantendrá encendido durante la adquisición de la imagen</string>
+    <string name="pref_notes">Notas siempre visibles</string>
+    <string name="pref_notes_expl">Si quieres que las notas de los tests estén siempre visibles en la lista de tests dentro de Mis Ciclos</string>
+    <string name="pref_camera">Mostrar de nuevo los consejos sobre el uso de la cámara</string>
+    <string name="pref_camera_expl">Si quieres que la información sea visible la próxima vez que saques una foto</string>
+    <string name="pref_date_format">Formato de fecha</string>
+    <string name="pref_date_format_dd_mm_yyyy">dd/mm/aaaa</string>
+    <string name="pref_date_format_mm_dd_yyyy">mm/dd/aaaa</string>
 
     <string name="pref_information">Información</string>
     <string name="pref_ovulation_brand">Marca del test de ovulación por defecto</string>
@@ -133,18 +161,13 @@
     <string name="pref_display_preg_brand">Escribe la marca aquí</string>
 
     <string name="pref_version">Versión</string>
+    <string name="pref_dev_mode">Modo de desarrollador</string>
+    <string name="pref_dev_mode_expl">Activa funciones avanzadas para desarrolladores.</string>
     <string name="pref_clear_title">Restablecer los ajustes</string>
     <string name="pref_clear">Toca aquí para borrar todas tus preferencias.</string>
     <string name="pref_reset">Preferencias borradas.</string>
 
-    <string name="pref_usability">Usabilidad</string>
 
-    <string name="pref_torch">Usar el flash cuando se necesite para el autoenfocado</string>
-    <string name="pref_torch_expl">El flash ayuda a que la cámara enfoque mejor si detecta falta de luz, pero no se mantendrá encendido durante la adquisición de la imagen</string>
-    <string name="pref_notes">Notas siempre visibles</string>
-    <string name="pref_notes_expl">Si quieres que las notas de los tests estén siempre visibles en la lista de tests dentro de Mis Ciclos</string>
-    <string name="pref_camera">Mostrar de nuevo los consejos sobre el uso de la cámara</string>
-    <string name="pref_camera_expl">Si quieres que la información sea visible la próxima vez que saques una foto</string>
 
     <!--- Information Activity -->
     <string name="info_title_teststrips">Test en tiras</string>
@@ -336,9 +359,10 @@
 
     <!-- New Test Activity -->
     <string name="ntest_camera_perm">Se requieren acceso a la cámara para hacer fotos de nuevos tests.</string>
+    <string name="ntest_select_image">Seleciona una imagen</string>
 
     <!-- Test Edition Activity -->
-    <string name="ted_expl1">Lo sentimos, esta fecha coincide con la de un ciclo existente.</string>
+    <string name="ted_expl1">Lo sentimos, esta fecha coincide con la de un ciclo existente. Puedes editar los ciclos en Mis Ciclos.</string>
     <string name="ted_expl2">Cuando se crea un ciclo, su fecha no puede coincidir con la de otro ciclo existente.\n</string>
     <string name="ted_expl3">El ciclo debe comenzar antes o en la misma fecha que este test.</string>
 

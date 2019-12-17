@@ -10,6 +10,9 @@
       <item name="actionBarStyle">@style/FtaActionBar</item>
 
       <item name="android:clipToPadding">false</item>
+
+      <item name="android:spinnerDropDownItemStyle">@style/FtaSpinnerDropDownStyle</item>
+      <item name="spinnerDropDownItemStyle">@style/FtaSpinnerDropDownStyle</item>
    </style>
 
    <style name="FtaDialogTheme" parent="FtaTheme">

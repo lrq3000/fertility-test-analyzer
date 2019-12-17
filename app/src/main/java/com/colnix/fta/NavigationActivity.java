@@ -57,6 +57,12 @@ public class NavigationActivity extends ServicesActivity implements NavigationVi
       super.init();
    }
 
+   @Override
+   protected void onDestroy()
+   {
+      super.onDestroy();
+   }
+
    /**
     * Event invoked when the data is ready.
     */
@@ -98,7 +104,7 @@ public class NavigationActivity extends ServicesActivity implements NavigationVi
    {
       DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
       assert drawer != null;
-      if (drawer.isDrawerOpen(GravityCompat.START))
+      if(drawer.isDrawerOpen(GravityCompat.START))
       {
          drawer.closeDrawer(GravityCompat.START);
       }
@@ -118,6 +124,7 @@ public class NavigationActivity extends ServicesActivity implements NavigationVi
 
    /**
     * Called when an item in the navigation menu is selected.
+    *
     * @param item The selected item
     * @return true to display the item as the selected item
     */
@@ -133,45 +140,27 @@ public class NavigationActivity extends ServicesActivity implements NavigationVi
             break;
 
          case R.id.nav_new_test:
-            TaskStackBuilder.create(this)
-                  .addParentStack(NewTestActivity.class)
-                  .addNextIntent(new Intent(this, NewTestActivity.class))
-                  .startActivities();
+            TaskStackBuilder.create(this).addParentStack(NewTestActivity.class).addNextIntent(new Intent(this, NewTestActivity.class)).startActivities();
             break;
 
          case R.id.nav_my_tests:
-            TaskStackBuilder.create(this)
-                  .addParentStack(MyCyclesActivity.class)
-                  .addNextIntent(new Intent(this, MyCyclesActivity.class))
-                  .startActivities();
+            TaskStackBuilder.create(this).addParentStack(MyCyclesActivity.class).addNextIntent(new Intent(this, MyCyclesActivity.class)).startActivities();
             break;
 
          case R.id.nav_my_cycles:
-            TaskStackBuilder.create(this)
-                  .addParentStack(ChartsActivity.class)
-                  .addNextIntent(new Intent(this, ChartsActivity.class))
-                  .startActivities();
+            TaskStackBuilder.create(this).addParentStack(ChartsActivity.class).addNextIntent(new Intent(this, ChartsActivity.class)).startActivities();
             break;
 
          case R.id.nav_information:
-            TaskStackBuilder.create(this)
-                  .addParentStack(InformationActivity.class)
-                  .addNextIntent(new Intent(this, InformationActivity.class))
-                  .startActivities();
+            TaskStackBuilder.create(this).addParentStack(InformationActivity.class).addNextIntent(new Intent(this, InformationActivity.class)).startActivities();
             break;
 
          case R.id.nav_settings:
-            TaskStackBuilder.create(this)
-                    .addParentStack(SettingsActivity.class)
-                    .addNextIntent(new Intent(this, SettingsActivity.class))
-                    .startActivities();
+            TaskStackBuilder.create(this).addParentStack(SettingsActivity.class).addNextIntent(new Intent(this, SettingsActivity.class)).startActivities();
             break;
 
          case R.id.nav_help:
-            TaskStackBuilder.create(this)
-                    .addParentStack(HelpActivity.class)
-                    .addNextIntent(new Intent(this, HelpActivity.class))
-                    .startActivities();
+            TaskStackBuilder.create(this).addParentStack(HelpActivity.class).addNextIntent(new Intent(this, HelpActivity.class)).startActivities();
             break;
 
          case R.id.nav_about:

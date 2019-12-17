@@ -38,6 +38,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -57,12 +58,12 @@ import java.util.Date;
 
 /**
  * Strip test photo verification activity.
- *
+ * <p>
  * Shows the picture taken of a strip and lets the user verify that it is correctly placed.
  */
 public class TestVerificationActivity extends AppCompatActivity
 {
-   //static final String TAG = "TestVerification";
+   static final String TAG = "TestVerification";
 
    static final int REQUEST_PERM = 1;
    static final int REQUEST_TESTEDIT = 2;
@@ -75,7 +76,7 @@ public class TestVerificationActivity extends AppCompatActivity
    /**
     * Minimum allowed height for a valid base color as a percent (per one) of the base.
     */
-   static final float MIN_BASE_HEIGHT_PER = 0.45f;
+   static final float MIN_BASE_HEIGHT_PER = 0.40f;
 
    /**
     * Minimum allowed height for a valid base color.
@@ -85,7 +86,7 @@ public class TestVerificationActivity extends AppCompatActivity
    /**
     * Minimum allowed width for a valid base color as a percent (per one) of the base.
     */
-   static final float MIN_BASE_WIDTH_PER = 0.45f;
+   static final float MIN_BASE_WIDTH_PER = 0.40f;
 
    /**
     * Minimum allowed width for a valid base color.
@@ -127,7 +128,7 @@ public class TestVerificationActivity extends AppCompatActivity
     * Control line auto crop square half side in which average the center.
     * 0 means no average, 1 means a 3x3 pixel square, 2 means 5x5....
     */
-   static final int MAX_CONTROL_CENTER = 1;
+   static final int MAX_CONTROL_CENTER = 2;
 
    /**
     * Control line auto crop intensity delta.
@@ -412,10 +413,10 @@ public class TestVerificationActivity extends AppCompatActivity
             builder.setView(body);
 
             final AlertDialog dlg = builder.create();
-            ImageButton ib = (ImageButton)body.findViewById(R.id.btn_recalculate);
+            ImageButton ib = (ImageButton) body.findViewById(R.id.btn_recalculate);
             ib.setEnabled(false);
-            Button button = (Button)body.findViewById(R.id.btn_ok);
-            final CheckBox cb = (CheckBox)body.findViewById(R.id.check_dont_repeat);
+            Button button = (Button) body.findViewById(R.id.btn_ok);
+            final CheckBox cb = (CheckBox) body.findViewById(R.id.check_dont_repeat);
             button.setOnClickListener(new View.OnClickListener()
             {
                @Override
@@ -529,16 +530,14 @@ public class TestVerificationActivity extends AppCompatActivity
             if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE))
             {
                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-               builder.setTitle(getString(R.string.tverific_permision_needed))
-                     .setMessage(getString(R.string.tverific_permision_expl))
-                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
-                     {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i)
-                        {
-                           ActivityCompat.requestPermissions(TestVerificationActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERM);
-                        }
-                     });
+               builder.setTitle(getString(R.string.tverific_permision_needed)).setMessage(getString(R.string.tverific_permision_expl)).setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
+               {
+                  @Override
+                  public void onClick(DialogInterface dialogInterface, int i)
+                  {
+                     ActivityCompat.requestPermissions(TestVerificationActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERM);
+                  }
+               });
                builder.create().show();
             }
             else
@@ -550,8 +549,7 @@ public class TestVerificationActivity extends AppCompatActivity
       }
 
       // App media directory
-      File mediaDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), getString(R.string.app_name));
-      mediaDir.mkdirs();
+      File mediaDir = Config.getMediaDir(this);
 
       // Create a media file name
       String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -634,10 +632,7 @@ public class TestVerificationActivity extends AppCompatActivity
       {
          if(resultCode == RESULT_OK)
          {
-            TaskStackBuilder.create(this)
-                  .addParentStack(MyCyclesActivity.class)
-                  .addNextIntent(new Intent(this, MyCyclesActivity.class))
-                  .startActivities();
+            TaskStackBuilder.create(this).addParentStack(MyCyclesActivity.class).addNextIntent(new Intent(this, MyCyclesActivity.class)).startActivities();
          }
          else
          {
@@ -663,7 +658,7 @@ public class TestVerificationActivity extends AppCompatActivity
     */
    boolean error(String msg, String error)
    {
-      //Log.w(TAG, msg);
+      Log.w(TAG, msg);
       msgLayout.setVisibility(View.VISIBLE);
       msgError.setText(msg);
       //msgError.setText(error);
@@ -688,6 +683,7 @@ public class TestVerificationActivity extends AppCompatActivity
       int min_height = (int) (base.getHeight() * MIN_BASE_HEIGHT_PER);
       if(min_height < MIN_BASE_HEIGHT)
          min_height = MIN_BASE_HEIGHT;
+      //Log.d(TAG, "findBase: min_width = " + min_width + ", min_height = " + min_height);
 
       // Start with a vertical auto crop:
       // Get the intensity in the center
@@ -745,9 +741,9 @@ public class TestVerificationActivity extends AppCompatActivity
       // Apply margins
       if(!base.margin(0, top, 0, bottom) || base.getHeight() < min_height)
       {
-         //placeholder.setDebugLine(base.getRect(), bitmap);
+         //placeholder.setDebugBase(base.getRect(), bitmap);
+         Log.d(TAG, "Invalid base color (delta: " + base.getDelta() + ", area: " + base.getArea() + ").");
          error(getString(R.string.tverific_error_position_light), "base_margin_1");
-         //error("Invalid base color (delta: " + base.getDelta() + ", area: " + base.getArea() + ").");
          return null;
       }
 
@@ -768,8 +764,7 @@ public class TestVerificationActivity extends AppCompatActivity
          }
 
          // Get the distance to the borders
-         Rect distance = new Rect(point.x + STEP_BASE_MARGIN, point.y + STEP_BASE_MARGIN,
-               base.getWidth() - point.x + STEP_BASE_MARGIN, base.getHeight() - point.y + STEP_BASE_MARGIN);
+         Rect distance = new Rect(point.x + STEP_BASE_MARGIN, point.y + STEP_BASE_MARGIN, base.getWidth() - point.x + STEP_BASE_MARGIN, base.getHeight() - point.y + STEP_BASE_MARGIN);
 
          // Make the smallest area part of the margin (priority for the sides)
          Rect margin = new Rect();
@@ -827,13 +822,14 @@ public class TestVerificationActivity extends AppCompatActivity
          // Apply margin and retry
          if(!base.margin(margin) || base.getWidth() < min_width || base.getHeight() < min_height)
          {
-            //placeholder.setDebugLine(base.getRect(), bitmap);
-            //error("Invalid base color (delta: " + base.getDelta() + ")");
+            //placeholder.setDebugBase(base.getRect(), bitmap);
+            Log.d(TAG, "Base area too small (delta: " + base.getDelta() + ", base: " + base.getRect() + ")");
             error(getString(R.string.tverific_error_position_light), "base_margin_2");
             return null;
          }
       }
 
+      //placeholder.setDebugBase(base.getRect(), bitmap);
       return base;
    }
 
@@ -886,7 +882,7 @@ public class TestVerificationActivity extends AppCompatActivity
          box.top += y_center - MAX_CONTROL_CENTER;
          placeholder.setDebugLine(box, bitmap);
          */
-         //error("Not enough contrast in control center (delta: " + (center - base_intens) + ").");
+         Log.d(TAG, "Not enough contrast in control center (delta: " + (center - base_intens) + ").");
          error(getString(R.string.tverific_error_position_light), "control_contrast_1");
          return null;
       }
@@ -965,8 +961,8 @@ public class TestVerificationActivity extends AppCompatActivity
       // Apply margins
       if(!control.margin(left, top, right, bottom) || control.getWidth() < min_width || control.getHeight() < min_height)
       {
-         //placeholder.setDebugControlLine(control.getRect(), bitmap);
-         //error("Control line not found (delta: " + control.getDelta() + ", area: " + control.getArea() + ").");
+         placeholder.setDebugControlLine(control.getRect(), bitmap);
+         Log.d(TAG, "Control line not found (delta: " + control.getDelta() + ", area: " + control.getRect() + ").");
          error(getString(R.string.tverific_error_control_not_found), "control_margin");
          return null;
       }
@@ -1058,7 +1054,7 @@ public class TestVerificationActivity extends AppCompatActivity
       if(control.getAverage() < base_intens + min_contrast)
       {
          //placeholder.setDebugControlLine(control.getRect(), bitmap);
-         //error("Not enough contrast in control line (delta: " + (control.getAverage() - base_intens) + ").");
+         Log.d(TAG, "Not enough contrast in control line (delta: " + (control.getAverage() - base_intens) + ").");
          error(getString(R.string.tverific_error_control_contrast), "control_contrast_2");
          return null;
       }
@@ -1182,6 +1178,7 @@ public class TestVerificationActivity extends AppCompatActivity
       // Apply margins
       if(!line.margin(0, top, 0, bottom) || line.getHeight() < min_height)
       {
+         Log.d(TAG, "Strip line bad framed: top = " + top + ", bottom = " + bottom + ", min_height = " + min_height);
          return null;
       }
 
@@ -1239,17 +1236,29 @@ public class TestVerificationActivity extends AppCompatActivity
 
       int min_index = max_index - col_width / 2;
       if(min_index < 0)
+      {
+         Log.d(TAG, "Line not found (min index).");
          return null;
+      }
       float min_value = x_avg[min_index];
       if(min_value > max_value - MIN_LINE_DELTA)
+      {
+         Log.d(TAG, "Line not found (min value).");
          return null;
+      }
 
       min_index = max_index + col_width / 2;
       if(min_index > width - 1)
+      {
+         Log.d(TAG, "Line not found (max index).");
          return null;
+      }
       min_value = x_avg[min_index];
       if(min_value > max_value - MIN_LINE_DELTA)
+      {
+         Log.d(TAG, "Line not found (max value).");
          return null;
+      }
 
       // Apply the new margin
       line.margin(best_x, 0, width - best_x - col_width, 0);
@@ -1271,8 +1280,8 @@ public class TestVerificationActivity extends AppCompatActivity
       if(base == null)
          return false;
 
-      //Log.w(TAG, "bitmap: " + bitmap.getWidth() + "x" + bitmap.getHeight());
-      //Log.w(TAG, "control line: " + placeholder.getControlLine(bitmap));
+      //Log.d(TAG, "bitmap: " + bitmap.getWidth() + "x" + bitmap.getHeight());
+      //Log.d(TAG, "control line: " + placeholder.getControlLine(bitmap));
 
       // Get control line area and intensity
       IntensityArea control = findControl(base.getAverage(), MIN_CONTROL_CONTRAST);
@@ -1330,8 +1339,8 @@ public class TestVerificationActivity extends AppCompatActivity
       if(base == null)
          return error(getString(R.string.tverific_fatal), "fatal_" + errorCode);
 
-      //Log.w(TAG, "bitmap: " + bitmap.getWidth() + "x" + bitmap.getHeight());
-      //Log.w(TAG, "control line: " + placeholder.getControlLine(bitmap));
+      //Log.d(TAG, "bitmap: " + bitmap.getWidth() + "x" + bitmap.getHeight());
+      //Log.d(TAG, "control line: " + placeholder.getControlLine(bitmap));
 
       // Get control line area and intensity
       IntensityArea control = findControl(base.getAverage(), MIN_CONTROL_CONTRAST_PREVIEW);

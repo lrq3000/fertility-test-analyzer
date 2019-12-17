@@ -22,12 +22,15 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
+import android.util.Log;
 
 /**
  * Service that manages a singleton TestsData object and shares it within the application.
  */
 public class TestsService extends Service
 {
+   static final String TAG = "TestsService";
+
    /**
     * Intermediate class to pass on a reference to the data.
     */
@@ -64,14 +67,15 @@ public class TestsService extends Service
     * Return the communication channel to the service.
     * Note that unlike other application components, calls on to the IBinder interface returned
     * here may not happen on the main thread of the process.
+    *
     * @param intent The Intent that was used to bind to this service, as given to Context.bindService.
-    *    Note that any extras that were included with the Intent at that point will not be seen here.
+    *               Note that any extras that were included with the Intent at that point will not be seen here.
     * @return Return an IBinder through which clients can call on to the service.
     */
    @Override
    public IBinder onBind(Intent intent)
    {
-      //Log.i("TestsService", "onBind");
+      //Log.i(TAG, "onBind");
       if(data == null)
       {
          data = new TestsData(getApplicationContext());
@@ -82,8 +86,9 @@ public class TestsService extends Service
 
    /**
     * Called when all clients have disconnected from a particular interface published by the service.
+    *
     * @return Return true if you would like to have the service's onRebind(Intent) method later
-    *    called when new clients bind to it.
+    * called when new clients bind to it.
     */
    @Override
    public boolean onUnbind(Intent intent)
@@ -97,7 +102,7 @@ public class TestsService extends Service
    @Override
    public void onDestroy()
    {
-      //Log.i("TestsService", "onDestroy");
+      //Log.i(TAG, "onDestroy");
       if(data != null)
       {
          data.close();

@@ -24,7 +24,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.widget.Toast;
+
+import java.io.File;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -51,7 +54,7 @@ public class Config
    /**
     * Number of failed attempts which make the camera wizard to show.
     */
-   static final int[] CONST_ATTEMPTS_CAMERA_WIZARD = new int[] { 3, 6, 9 };
+   static final int[] CONST_ATTEMPTS_CAMERA_WIZARD = new int[]{3, 6, 9};
 
 
    //// Preferences keys ////
@@ -121,6 +124,11 @@ public class Config
    static final String PREF_SHOW_CAMERA_PREVIEW = "show_camera_preview";
 
    /**
+    * Pattern used to format dates.
+    */
+   static final String PREF_DATE_FORMAT = "date_format";
+
+   /**
     * Name of the ovulation brand to use by default.
     */
    static final String PREF_DEFAULT_OVULATION_BRAND = "default_ovulation_brand";
@@ -129,6 +137,11 @@ public class Config
     * Name of the pregnancy brand to use by default.
     */
    static final String PREF_DEFAULT_PREGNANCY_BRAND = "default_pregnancy_brand";
+
+   /**
+    * If the developmer mode is enabled.
+    */
+   static final String PREF_DEV_MODE = "dev_mode";
 
 
    /**
@@ -164,8 +177,7 @@ public class Config
    {
       Intent sendIntent = new Intent();
       sendIntent.setAction(Intent.ACTION_SEND);
-      sendIntent.putExtra(Intent.EXTRA_TEXT,
-            String.format(ctx.getResources().getString(R.string.share_text), CONST_GOOGLE_PLAY_WEB));
+      sendIntent.putExtra(Intent.EXTRA_TEXT, String.format(ctx.getResources().getString(R.string.share_text), CONST_GOOGLE_PLAY_WEB));
       sendIntent.setType("text/plain");
       ctx.startActivity(Intent.createChooser(sendIntent, ctx.getResources().getText(R.string.share_title)));
    }
@@ -208,5 +220,27 @@ public class Config
          return model.toUpperCase();
       }
       return manufacturer.toUpperCase() + " " + model.toUpperCase();
+   }
+
+   public static String getDateFormat(Context ctx)
+   {
+      return getPrefs(ctx).getString(PREF_DATE_FORMAT, "dd/MM/yyyy");
+   }
+
+   public static boolean isDevMode(Context ctx)
+   {
+      return getPrefs(ctx).getBoolean(PREF_DEV_MODE, false);
+   }
+
+   public static File getMediaDir(Context ctx)
+   {
+      File mediaDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), ctx.getString(R.string.app_name));
+      mediaDir.mkdirs();
+      return mediaDir;
+   }
+
+   public static String getMediaDisplayDir(Context ctx)
+   {
+      return "/" + Environment.DIRECTORY_PICTURES + "/" + ctx.getString(R.string.app_name);
    }
 }

@@ -31,14 +31,15 @@ import android.view.View;
 /**
  * This view prints a strip placeholder in the screen so that the user can place the strip correctly
  * in the camera view.
- *
+ * <p>
  * TODO: Serious misalignment reported in some smartphones. Related to soft keys?
- *    (Model: GOOGLE PIXEL XL)
+ * (Model: GOOGLE PIXEL XL)
  */
 public class StripPlaceholderView extends View
 {
    /**
     * Scales a percentage rectangle to the window dimensions.
+    *
     * @param r Percentage rectangle, all dimensions in [0, 1].
     * @param w Window width.
     * @param h Window height.
@@ -46,11 +47,12 @@ public class StripPlaceholderView extends View
     */
    public static Rect scaleRect(RectF r, int w, int h)
    {
-      return new Rect((int)(r.left * w), (int)(r.top * h), (int)(r.right * w), (int)(r.bottom * h));
+      return new Rect((int) (r.left * w), (int) (r.top * h), (int) (r.right * w), (int) (r.bottom * h));
    }
 
    /**
     * Extracts the percentage rectangle of a real rectangle and the window dimensions.
+    *
     * @param r Rectangle in window dimensions.
     * @param w Window width.
     * @param h Window height.
@@ -58,7 +60,7 @@ public class StripPlaceholderView extends View
     */
    public static RectF unscaleRect(Rect r, int w, int h)
    {
-      return new RectF((float)r.left / w, (float)r.top / h, (float)r.right / w, (float)r.bottom / h);
+      return new RectF((float) r.left / w, (float) r.top / h, (float) r.right / w, (float) r.bottom / h);
    }
 
 
@@ -167,7 +169,7 @@ public class StripPlaceholderView extends View
 
    /**
     * Returns the area of the view in which the test line should be.
-   */
+    */
    Rect getTestLine(Bitmap bm)
    {
       return scaleRect(testLine, bm.getWidth(), bm.getHeight());
@@ -219,6 +221,7 @@ public class StripPlaceholderView extends View
 
    /**
     * Sets the placeholder type and updates the view.
+    *
     * @param type number 1 to 3.
     */
    void setType(int type)
@@ -269,7 +272,7 @@ public class StripPlaceholderView extends View
       Rect r = scaleRect(testLine, w, h);
       int sep = (r.bottom - r.top) / 3;
       int bracket = (r.bottom - r.top) / 4;
-      int corner = (int)(paint.getStrokeWidth() / 2);
+      int corner = (int) (paint.getStrokeWidth() / 2);
       canvas.drawLine(r.left, r.top - sep - corner, r.left, r.bottom + sep + corner, paint);
       canvas.drawLine(r.left - corner, r.bottom + sep, r.left + bracket, r.bottom + sep, paint);
       canvas.drawLine(r.left - corner, r.top - sep, r.left + bracket, r.top - sep, paint);

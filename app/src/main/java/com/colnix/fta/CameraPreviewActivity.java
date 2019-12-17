@@ -37,6 +37,7 @@ public class CameraPreviewActivity extends AppCompatActivity
     * Called when the activity is starting. This is where most initialization should go: calling
     * setContentView(int) to inflate the activity's UI, using findViewById(int) to programmatically
     * interact with widgets in the UI
+    *
     * @param savedInstanceState
     */
    @Override
@@ -51,11 +52,12 @@ public class CameraPreviewActivity extends AppCompatActivity
       setContentView(R.layout.activity_camera_preview);
 
       Button btn = (Button) findViewById(R.id.btn_ok);
-      btn.setOnClickListener(new View.OnClickListener() {
+      btn.setOnClickListener(new View.OnClickListener()
+      {
          @Override
          public void onClick(View v)
          {
-            CheckBox cb = (CheckBox)findViewById(R.id.check_dont_repeat);
+            CheckBox cb = (CheckBox) findViewById(R.id.check_dont_repeat);
             if(cb.isChecked())
             {
                // The camera wizard will not show automatically next time
