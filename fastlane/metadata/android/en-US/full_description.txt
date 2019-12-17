@@ -1,0 +1,28 @@
+Fertility Test Analyzer is the best fertility app to help you interpret both pregnancy and ovulation test strips by giving you the % of pigmentation. It provides you with fertility charts based on your hormone levels so you can pinpoint your fertile window and track your early pregnancy days. Fertility Test Analyzer helps you get pregnant, especially if you have PCOS or irregular periods when ordinary ovulation calendars and trackers are not so helpful. It also makes you save money! Now you can buy cheap test strips in bulk knowing that you will be confident about the results once and for all!
+
+Fertility Test Analyzer reads pregnancy and ovulation test strips, interprets their results and shows them in an easy and understandable way. Be reassured when reading the pigmentation level of an ovulation test or seeing a very faint line on a pregnancy test. Find out that you are pregnant before a missed period using the most sensitive tests in combination with our app. Join other pregnancy success stories! Using our  unique computer vision algorithm, Fertility Test Analyzer recognizes the pigmentation trace present in the test pad and gives you your long awaited answer.
+
+KEY HIGHLIGHTS
+✔ Read pregnancy and ovulation test strips without any doubts.
+✔ Detect ovulation based on your hormone levels.
+✔ Predict your fertile window.
+✔ Improve your chances of pregnancy by better timing intercourse.
+✔ Check on your pregnancy initial days following your hCG evolution with its fertility charts. 
+✔ Access your data offline and review it when Internet access is not available.
+✔ Keep pictures of your tests safely saved in your mobile phone.
+
+IMPORTANT LIMITATIONS
+Fertility Test Analyzer transforms qualitative data,given by the pregnancy and ovulation test strips, into quantitative data (% pigmentation). The accuracy of the numeric value is affected by a number of factors, such as: test quality, how diluted the urine is, the quality of the camera used, your skills in taking a good picture and a correct lighting. Hence, numeric results obtained cannot be taken as exact values, only a laboratory can give those.
+Use at your own risk. Do not use to avoid pregnancy or anything where more accuracy would be required. Please consult your healthcare provider for any health concern.
+
+AUTHORS' NOTE
+The time has come to say goodbye.
+
+Over the last years we created and give support to Fertility Test Analyzer in our spare time as part of a non-profit project. Our intention was to help women to reach their dream of become mothers, and we are happy to see that it has over 70k installations at the time.
+Sadly we have to admit that we don't have the resources to keep up on new devices and therefore we have taken the decision of release the app to the public domain under a commercial free license. We expect other fertility apps to use this technology in the near future and we think that this is the best way we have to contribute to the well being of women with fertility difficulties.
+
+Unfortunately we won't be giving support or maintenance to the app anymore. If you are an Android developer with some free time and want to contribute (there are a couple of things with priority if you have a modern device), the source code is on https://gitlab.com/colnix/fta. Please make a pull request or create a brand new app of your own! The only legal requirement is that you have to use it for good, not for evil :)
+
+Thank you for join us throughout this project and we hope to see you soon in another adventure.
+
+María and Pablo

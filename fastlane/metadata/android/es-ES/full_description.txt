@@ -1,0 +1,29 @@
+Fertility Test Analyzer es la mejor aplicación de fertilidad para interpretar los test de ovulación y embarazo en tiras, calculando el % de pigmentación. Te proporciona gráficas de fertilidad basadas en tus niveles hormonales para que puedas identificar tu ventana fértil con facilidad y seguir los primeros días de embarazo. Fertility Test Analyzer te ayuda a quedarte embarazada, especialmente si tienes ciclos irregulares y ovarios poliquísticos, ya que en estos casos los calendarios de ovulación no son efectivos. ¡Además también te ayuda a ahorrar! Ahora puedes comprar los test en tiras, mucho más económicos, sabiendo que estarás segura de los resultados de una vez por todas.
+
+Fertility Test Analyzer lee los test de ovulación y embarazo en tiras, interpreta los resultados y los muestra de una forma fácil y comprensible. ¡Se acabaron las dudas al ver una línea muy tenue en un test de embarazo! Descubre que estás embarazada antes de la primera falta de regla usando los tests más sensibles del mercado en combinación con nuestra aplicación. ¡Únete a otras historias exitosas de embarazo! Utilizando un algoritmo único de visión artificial, Fertility Test Analyzer reconoce las trazas de pigmento presentes en la almohadilla de test y te da tu ansiada respuesta.
+
+CARACTERÍSTICAS DESTACADAS
+✔ Lee los test de ovulación y embarazo en tiras sin más dudas.
+✔ Detecta tu ovulación basándote en tus niveles hormonales.
+✔ Predice tu ventana fértil.
+✔ Mejora tus oportunidades de embarazo al sincronizar mejor tus relaciones.
+✔ Verifica los primeros días de tu embarazo siguiendo la evolución de la hormona GCH con sus gráficas de fertilidad.
+✔ Introduce tus datos sin conexión y revísalos sin estar en Internet.
+✔ Guarda las fotografías de tus tests de forma segura en tu móvil.
+
+LIMITACIONES IMPORTANTES
+Fertility test  Analyzer transforma los datos cualitativos, dados por los test de ovulación y embarazo en tiras, en datos cuantitativos (% de pigmentación). La exactitud de los valores numéricos se ve afectada por ciertos factores que son: la calidad del test, cómo de diluida está la orina, la calidad de la cámara empleada, tus habilidades para tomar una buena foto y una iluminación correcta. De este modo, los resultados numéricos obtenidos no pueden ser considerados valores exactos, sólo un laboratorio puede ofrecer dichos valores.
+Usa la aplicación bajo tu propia responsabilidad. No la utilices para evitar el embarazo o para cualquier otra actividad en la que se necesite una mayor exactitud. Por favor, consulta a tu médico sobre cualquier duda de salud.
+
+NOTA DE LOS AUTORES
+Ha llegado el momento de decir adiós.
+
+Durante los últimos años hemos creado y dado soporte técnico a Fertility Test Analyzer durante nuestro tiempo libre, como parte de un proyecto sin ánimo de lucro. Nuestra intención era ayudar a las mujeres a alcanzar su sueño de ser madres, y nos alegra ver que en este momento la app tiene más de 70k instalaciones.
+
+Tristemente debemos admitir que no disponemos de recursos para actualizar la app en nuevos dispositivos y, por esta razón, hemos tomado la decisión de liberarla al dominio público bajo una licencia comercial gratuita. Esperamos que otras aplicaciones de fertilidad utilicen esta tecnología en un futuro cercano y creemos que esta es la mejor forma para contribuir al bienestar de las mujeres con problemas de fertilidad.
+
+Desafortunadamente no proporcionaremos más soporte técnico ni mantenimiento a la app. Si eres un desarrollador/a de Android con algo de tiempo libre y te gustaría contribuir (hay un par de cosas prioritarias si tienes un dispositivo moderno), el código fuente se encuentra en https://gitlab.com/colnix/fta. Por favor, haz un pull request o ¡crea una nueva app por tu cuenta! El único requerimiento legal es que la uses para hacer el bien, nunca para el mal :)
+
+Gracias por unirte a nosotros en este proyecto y esperamos verte pronto en otra aventura.
+
+María y Pablo
