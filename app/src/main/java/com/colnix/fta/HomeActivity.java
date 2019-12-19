@@ -117,7 +117,14 @@ public class HomeActivity extends NavigationActivity
 
       // Start the service for all the application life, otherwise it gets recreated on every
       // activity.
-      startService(new Intent(this, TestsService.class));
+      if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+      {
+         startForegroundService(new Intent(this, TestsService.class));
+      }
+      else
+      {
+         startService(new Intent(this, TestsService.class));
+      }
       init();
 
       // Called when the user clicks on New Test Button
