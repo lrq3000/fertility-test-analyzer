@@ -80,7 +80,8 @@ def convertSvgInternal(svg_file, png_file, density) {
 
     png_file.getParentFile().mkdirs()
 
-    def cmd = ["inkscape", "--export-dpi=" + dpi, "--export-png=" + png_file, svg_file]
+    //def cmd = ["inkscape", "--export-dpi=" + dpi, "--export-png=" + png_file, svg_file]
+    def cmd = ["dbus-run-session", "--", "inkscape", "--export-dpi=" + dpi, "--export-filename=" + png_file, svg_file]
     //println cmd
 
     def inkscape_error = false
@@ -93,8 +94,8 @@ def convertSvgInternal(svg_file, png_file, density) {
     }
     proc.waitFor()
 
-    // proc.exitValue() is always 0
-    if (inkscape_error) {
+    // proc.exitValue() always returns 0
+    if (proc.exitValue() != 0 || inkscape_error) {
         println "[ERROR] Running command: \"" + cmd.join(" ") + "\""
         throw new GradleException("SVG convertion error, see output for details.")
     }
@@ -143,21 +144,21 @@ task processSgvs {
 
         /*** RESOURCES DEFINITION start here ***/
         /* See these examples:
-         * Creates icon.png for the default densities (mdpi, hdpi, xhdpi, xxhdpi, xxhdpi):
+         * Create icon.png for the default densities (mdpi, hdpi, xhdpi, xxhdpi, xxhdpi):
          *    convertSvg("icon.svg")
          * It works the same if the SVG is in a subfolder (creates the R.drawable.icon resource):
          *    convertSvg("icons/icon.svg")
-         * Specifies the output image name as button_add.png (so the id is R.drawable.button_add):
+         * Specify the output image name as button_add.png (so the id is R.drawable.button_add):
          *    convertSvg("button/add.svg", "button_add.png")
-         * Adds two prefix qualifier to the resource directory, so the output goes to drawable-sw560dp-land-*dpi:
+         * Add two prefix qualifiers to the resource directory, so the output goes to drawable-sw560dp-land-*dpi:
          *    convertSvg("icon.svg", "icon.png", ["sw560dp", "land"])
-         * Adds one suffix qualifiers, the output folders are like drawable-*dpi-v7:
+         * Add one suffix qualifier, the output folders are like drawable-*dpi-v7:
          *    convertSvg("icon.svg", "icon.png", [], ["v7"])
          * Remember that qualifiers have a specific order:
          * https://developer.android.com/guide/topics/resources/providing-resources.html#AlternativeResources
-         * Specifies the densities required:
+         * Specify the densities required:
          *    convertSvg("icon.svg", "icon.png", [], [], ["mdpi", "hdpi"])
-         * Creates icon.png for the default densities in the "mipmap" folder (so the id is R.mipmap.icon).
+         * Create icon.png for the default densities in the "mipmap" folder (so the id is R.mipmap.icon).
          *    convertSvg("icon.svg", "icon.png", [], [], defaultDpis, "mipmap")
          */
         convertSvg("logo.svg", "logo.png", [], [], defaultDpis, "mipmap")

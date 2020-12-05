@@ -6,9 +6,9 @@ android {
         applicationId "com.colnix.fta"
         minSdkVersion 19
         targetSdkVersion 28
-        versionName '2.1.0'
+        versionName '2.2.0'
         vectorDrawables.useSupportLibrary = true
-        versionCode 22
+        versionCode 23
     }
     buildTypes {
         release {
