@@ -80,8 +80,10 @@ def convertSvgInternal(svg_file, png_file, density) {
 
     png_file.getParentFile().mkdirs()
 
-    //def cmd = ["inkscape", "--export-dpi=" + dpi, "--export-png=" + png_file, svg_file]
-    def cmd = ["dbus-run-session", "--", "inkscape", "--export-dpi=" + dpi, "--export-filename=" + png_file, svg_file]
+    // TODO: Check inkscape --version and if dbus-run-session is needed automatically and once
+    //def cmd = ["inkscape", "--export-dpi=" + dpi, "--export-png=" + png_file, svg_file]  // Inkscape 0.x
+    // def cmd = ["dbus-run-session", "--", "inkscape", "--export-dpi=" + dpi, "--export-filename=" + png_file, svg_file] // Inkscape 1.x
+    def cmd = ["dbus-run-session", "--", "inkscape", "--export-dpi=" + dpi, "--export-png=" + png_file, svg_file]
     //println cmd
 
     def inkscape_error = false
